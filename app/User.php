@@ -11,7 +11,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	use Authenticatable, CanResetPassword;
     use EntrustUserTrait;
-
+    
 	/**
 	 * The database table used by the model.
 	 *
@@ -32,5 +32,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+    
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
+    }
 
 }

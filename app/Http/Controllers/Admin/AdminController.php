@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Admin;
     
-    use App\Http\Controllers\Controller;
     use App\Role;
     use Illuminate\Html;
-    class AdminController extends Controller {
+    use Illuminate\Support\Facades\Config;
+    class AdminController extends BaseController {
         
         /**
          * Create a new controller instance.
@@ -12,7 +12,7 @@
          */
         public function __construct()
         {
-            $this->middleware('auth');
+            
         }
         
         /**
@@ -23,6 +23,11 @@
         public function index()
         {
             return view('admin.index');
+        }
+        
+        public function setting()
+        {
+            return Config::get('setting.webname');
         }
         
     }
