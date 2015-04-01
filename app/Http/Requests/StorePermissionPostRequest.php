@@ -22,7 +22,7 @@ class StorePermissionPostRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required|alpha_dash|Unique:permissions,name',
+			'name' => 'required|Unique:permissions,name',
             'display_name' => 'required',
             'description' => 'required|max:255',
 		];

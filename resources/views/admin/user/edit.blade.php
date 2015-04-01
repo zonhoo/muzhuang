@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 @section('page-title')
 <div class="page-title">
     <div class="title-env">
@@ -46,120 +46,112 @@
             </div>
             <div class="panel-body">
                 
-                <form role="form" class="form-horizontal">
-                    
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="field-1">用户名</label>
-                        
+                {!! Form::open(['route'=>'user.update','role'=>'form','class'=>'form-horizontal',]) !!}
+                    {!! Form::hidden('id',$user->id) !!}
+                    <div class="form-group @if($errors->first('name')) has-error @endif">
+                        <label class="col-sm-2 control-label" for="name" >用户名</label>
+
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+                            <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}" placeholder="@if($errors->first('name')) {{$errors->first('name')}} @else 用户名 @endif">
                         </div>
                     </div>
-                    
+
                     <div class="form-group-separator"></div>
-                    
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="field-2">密码</label>
-                        
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="field-2" placeholder="Placeholder (Password)">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group-separator"></div>
-                    
-                    <div class="form-group">
+
+                    <div class="form-group @if($errors->first('email')) has-error @endif">
                         <label class="col-sm-2 control-label">email</label>
-                        
+
                         <div class="col-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="linecons-mail"></i>
                                 </span>
-                                <input type="email" class="form-control" placeholder="Enter your email">
+                                <input type="email" name="email" value="{{$user->email}}" class="form-control" placeholder="@if($errors->first('email')) {{$errors->first('email')}} @else 输入您的邮箱 @endif">
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="form-group-separator"></div>
-                    
+
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="field-5">签名</label>
-                        
+                        <label class="col-sm-2 control-label" for="signature">签名</label>
+
                         <div class="col-sm-10">
-                            <textarea class="form-control" cols="5" id="field-5"></textarea>
+                            <textarea class="form-control" cols="5" name="signature" id="signature" placeholder="您的个性签名">{{$user->signature}}</textarea>
                         </div>
                     </div>
-                    
+
                     <div class="form-group-separator"></div>
-                    
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="field-11">联系电话</label>
-                        
+
+                    <div class="form-group @if($errors->first('name')) has-error @endif">
+                        <label class="col-sm-2 control-label" for="telephone">联系电话</label>
+
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="field-14" placeholder="Normal input">
+                            <input type="text" name="telephone" id="telephone" value="{{$user->telephone}}" class="form-control" placeholder="@if($errors->first('telephone')) {{$errors->first('telephone')}} @else 手机号码 @endif">
                         </div>
                     </div>
-                    
+
                     <div class="form-group-separator"></div>
-                    
-                    <div class="form-group">
+
+                    <div class="form-group @if($errors->first('sex')) has-error @endif">
                         <label class="col-sm-2 control-label">性别</label>
-                        
+
                         <div class="col-sm-10">
-                            
+
                             <p>
                             <label class="radio-inline">
-                                <input type="radio" name="radio-2" checked>
+                                <input type="radio" name="sex" value="1" @if($user->sex==1) checked @endif>
                                     男
-                                    </label>
+                            </label>
                             <label class="radio-inline">
-                                <input type="radio" name="radio-2">
+                                <input type="radio" name="sex" value="2" @if($user->sex==2) checked @endif>
                                     女
-                                    </label>
+                            </label>
                             <label class="radio-inline">
-                                <input type="radio" name="radio-2">
+                                <input type="radio" name="sex" value="0" @if($user->sex==0) checked @endif>
                                     保密
-                                    </label>
+                            </label>
+                            @if($errors->first('sex')) {{$errors->first('sex')}} @endif
                             </p>
-                            
+
                         </div>
                     </div>
-                    
+
                     <div class="form-group-separator"></div>
-                    
-                    <div class="form-group">
+
+                    <div class="form-group @if($errors->first('is_banned')) has-error @endif">
                         <label class="col-sm-2 control-label">屏蔽</label>
-                        
+
                         <div class="col-sm-10">
-                            
+
                             <p>
                             <label class="radio-inline">
-                                <input type="radio" name="radio-2" checked>
+                                <input type="radio" name="is_banned" value="0" @if($user->is_banned==0) checked @endif>
                                     否
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="radio-2">
+                                <input type="radio" name="is_banned" value="1" @if($user->is_banned==1) checked @endif>
                                     是
                             </label>
+                            @if($errors->first('is_banned')) {{$errors->first('is_banned')}} @endif
                             </p>
-                            
+
                         </div>
                     </div>
-                    
+
                     <div class="form-group-separator"></div>
-                    
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label"></label>
-                        
+
                         <div class="col-sm-10">
-                            
-                            <button class="btn btn-danger">提交更新</button>
-                            
+
+                            <button class="btn btn-danger">更新</button>
+
                         </div>
                     </div>
-                    
-                </form>
+
+                {!! Form::close()!!}
                 
             </div>
         </div>

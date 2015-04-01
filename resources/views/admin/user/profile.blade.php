@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 @section('page-title')
 <div class="page-title">
     <div class="title-env">

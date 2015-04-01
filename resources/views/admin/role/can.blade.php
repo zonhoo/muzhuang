@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 @section('page-title')
 <div class="page-title">
     <div class="title-env">
@@ -87,7 +87,7 @@
                          });
                        });
                     </script>
-                {!! Form::open(['route'=>'role-updateCan','role'=>'form','class'=>'form-horizontal',]) !!}
+                {!! Form::open(['route'=>'role.updateCan','role'=>'form','class'=>'form-horizontal',]) !!}
                 {!! Form::hidden('role_id',$role->id) !!}
                 <table class="table table-bordered table-striped" id="example-2">
                     <thead>

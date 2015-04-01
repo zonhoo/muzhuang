@@ -4,19 +4,51 @@
     use App\User;
     use App\Role;
     use Illuminate\Http\Request;
+    use App\Http\Requests\StoreUserProfileRequest;
+    use App\Http\Requests\UpdateUserProfileRequest;
+    use App\Repositories\UserRepository;
     use Illuminate\Support\Facades\Route;
     class UserController extends BaseController{
+        protected $user;
         
+        public function __construct(UserRepository $user)
+        {
+            parent::__construct();
+            $this->user = $user;
+        }
+
         public function index()
         {
             //echo $can = Route::currentRouteName();
             $users = User::paginate(15);
             return view('admin.user.index',compact('users'));
         }
-        
+
+        public function create()
+        {
+            return view('admin.user.create');
+        }
+
+        public function store(StoreUserProfileRequest $request)
+        {
+            $user = $this->user->create($request->all());
+            if($user->id) $result = '添加成功';
+            else $result = '添加失败';
+            return $result;
+        }
+
+        public function update(UpdateUserProfileRequest $request)
+        {
+            $user = $this->user->update($request->all());
+            if($user->id) $result = '更新成功';
+            else $result = '更新失败';
+            return $result;
+        }
+
         public function edit($id)
         {
-            return view('admin.user.edit');
+            $user = User::findOrFail($id);
+            return view('admin.user.edit',compact('user'));
         }
         
         public function test(Request $request)

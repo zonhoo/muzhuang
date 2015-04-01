@@ -122,8 +122,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="ui-buttons.html">
-                            <span class="title">小编内容</span>
+                        <a href="{{route('admin.post.index') }}">
+                            <span class="title">内容管理</span>
                         </a>
                     </li>
                     <li>

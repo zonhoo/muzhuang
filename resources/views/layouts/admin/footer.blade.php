@@ -8,9 +8,9 @@
                     
                     <!-- Add your copyright text here -->
                     <div class="footer-text">
-                        &copy; 2014
-                        <strong>Xenon</strong>
-                        theme by <a href="http://laborator.co" target="_blank">Laborator</a>
+                        &copy; 2015
+                        <strong>Dashboard</strong>
+                        theme by <a href="http://www.chihuo1408.com" target="_blank">Mr. lv</a>
                     </div>
                     
                     

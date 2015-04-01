@@ -2,7 +2,7 @@
     
     use Illuminate\Html;
     use App\Permission;
-    use App\Http\Requests\StorePermissionPostRequest;
+    use App\Http\Requests\UpdatePermissionRequest;
     use App\Repositories\PermissionRepository;
     class PermissionController extends BaseController{
         
@@ -10,6 +10,7 @@
         
         public function __construct(PermissionRepository $permission)
         {
+            parent::__construct();
             $this->permission = $permission;
         }
         
@@ -41,7 +42,7 @@
             return view('admin.permission.edit',compact('permission'));
         }
         
-        public function update(StorePermissionPostRequest $request)
+        public function update(UpdatePermissionRequest $request)
         {
             $permission = $this->permission->update($request->all());
             if($permission->id){

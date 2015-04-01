@@ -3,7 +3,7 @@
     use App\Http\Controllers\Controller;
     use App\User;
     class BaseController extends Controller {
-        
+
         /**
          * Create a new controller instance.
          *

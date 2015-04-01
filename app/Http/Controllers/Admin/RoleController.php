@@ -46,7 +46,7 @@
             return $result;
         }
         
-        public function update(StoreRoleRequest $request)
+        public function update(UpdateRoleRequest $request)
         {
             $role = $this->role->update($request->all());
             if($role->id){

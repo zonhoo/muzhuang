@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 @section('page-title')
 <div class="page-title">
     <div class="title-env">
@@ -29,7 +29,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="panel panel-default">
-            <a class="btn btn-primary" href="{{ route('permission-create') }}">新节点</a>
+            <a class="btn btn-primary" href="{{ route('permission.create') }}">新节点</a>
         </div>
     </div>
 </div>
@@ -115,7 +115,7 @@
                                 <td>{{ $permission->display_name }}</td>
                                 <td>{{ $permission->description }}</td>
                                 <td>
-                                    <a href="{{route('permission-edit',$permission->id)}}" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                    <a href="{{route('permission.edit',$permission->id)}}" class="btn btn-secondary btn-sm btn-icon icon-left">
                                         编辑
                                     </a>
                                     

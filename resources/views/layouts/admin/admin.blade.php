@@ -33,20 +33,20 @@
 </head>
 <body class="page-body">
 
-    @include('layouts.header')
+    @include('layouts.admin.header')
 	
 	<div class="page-container">
         <!--inlcude sidebar-->
-        @include('layouts.sidebar')
+        @include('layouts.admin.sidebar')
 		<!-- main content-->
 		<div class="main-content">
             <!--navbar-->
-			@include('layouts.navbar')
+			@include('layouts.admin.navbar')
             @yield('page-title')
             <!--content-->
             @yield('content')
 
-            @include('layouts.footer')
+            @include('layouts.admin.footer')
 		</div>
 		
 			
@@ -180,7 +180,7 @@
 		
 	</div>
 	
-	
+	@yield('other')
 	
 
 
