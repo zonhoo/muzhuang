@@ -27,6 +27,8 @@ class CreatePostsTable extends Migration {
             $table->integer('favorite_count')->default(0)->index();
             $table->integer('share_count')->default(0)->index();
             $table->integer('view_count')->default(0)->index();
+            $table->integer('commit_count')->default(0)->index();
+            $table->string('status');
             $table->softDeletes();
 			$table->timestamps();
 		});

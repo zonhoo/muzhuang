@@ -1,8 +1,11 @@
 <?php namespace App\Http\ViewComposers;
     
+    use App\Menu;
     use Illuminate\Contracts\View\View;
     use Illuminate\Contracts\Auth\Guard;
-    
+    use App\Repositories\CategoryRepository;
+    use Illuminate\Support\Facades\Route;
+
     class adminIndexComposer {
         
         /**
@@ -33,7 +36,22 @@
          */
         public function compose(View $view)
         {
-            $view->with('auth', $this->auth->user());
+            //
+            $menus = Menu::all();
+            //dd($menus);
+            $category = new CategoryRepository;
+            $categorize = $category->getTop()->toArray();
+            foreach($categorize as $key=>$value){
+                $child = $category->getChild($value['id'])->toArray();
+                $categorize[$key]['child'] = $child;
+
+            }
+            $currentname = Route::currentRouteName();
+            $currentpid = $category->getFidByCurrentName($currentname);
+            $view->with('auth', $this->auth->user())
+                 ->with('categorize',$categorize)
+                 ->with('currentname',$currentname)
+                 ->with('currentpid',$currentpid);
         }
     
     }

@@ -23,8 +23,10 @@ class AddFieldsToUsersTalbe extends Migration {
           $table->string('photo_url')->nullable();
           $table->text('signature')->nullable();
           $table->tinyInteger('sex')->default(0);
-          $table->integer('follow_count')->default(0)->index();
-          $table->integer('like_count')->default(0)->index();;
+          $table->integer('follower_count')->default(0)->index();
+          $table->integer('following_count')->default(0)->index();
+          $table->integer('publish_count')->default(0)->index();
+          $table->integer('like_count')->default(0)->index();
           $table->boolean('is_banned')->default(false);
           $table->softDeletes();
           
@@ -42,7 +44,7 @@ class AddFieldsToUsersTalbe extends Migration {
 		Schema::table('users', function(Blueprint $table)
 		{
 			//
-            $table->dropColumn(array('telephone', 'true_name', 'photo_url','signature','sex','follow_count','like_count','is_banned','deleted_at'));
+            $table->dropColumn(array('telephone', 'true_name', 'photo_url','signature','sex','follower_count','following_count','publish_count','like_count','is_banned','deleted_at'));
 		});
 	}
 

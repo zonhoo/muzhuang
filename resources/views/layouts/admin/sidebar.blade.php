@@ -47,163 +47,25 @@
         <ul id="main-menu" class="main-menu">
             <!-- add class "multiple-expanded" to allow multiple submenus to open -->
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-            <li class="opened active">
-                <a href="dashboard-1.html">
-                    <i class="linecons-cog"></i>
-                    <span class="title">系统设置</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="dashboard-1.html">
-                            <span class="title">基本设置</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="dashboard-2.html">
-                            <span class="title">第三方API设置</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="dashboard-2.html">
-                            <span class="title">版本更新</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="dashboard-2.html">
-                            <span class="title">启动封面</span>
-                        </a>
-                    </li>
+            @foreach($categorize as $key=>$cate)
+                <li class="@if($currentpid==$cate['id']) opened active @endif">
+                    <a href="@if(!empty($cate['route_name'])){{route($cate['route_name'])}}@else#@endif">
+                        <i class="{{$cate['icon']}}"></i>
+                        <span class="title">{{trans('admin.'.$cate['name'])}}</span>
+                    </a>
+                    <ul>
+                    @foreach($cate['child'] as $k=>$v)
+                        <li @if($v['route_name']==$currentname) class="active" @endif>
+                            <a href="@if(!empty($v['route_name'])){{route($v['route_name'])}}@else#@endif">
+                                <span class="title">{{trans('admin.'.$v['name'])}}</span>
+                            </a>
+                        </li>
+                    @endforeach
+                    </ul>
+                </li>
+            @endforeach
 
 
-                </ul>
-            </li>
-            <li>
-                <a href="layout-variants.html">
-                    <i class="linecons-desktop"></i>
-                    <span class="title">用户中心</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="{{ route('user') }}">
-                            <span class="title">用户管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('role') }}">
-                            <span class="title">管理员管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('permission') }}">
-                            <span class="title">权限管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-horizontal-menu.html">
-                            <span class="title">虚拟用户管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-horizontal-plus-sidebar.html">
-                            <span class="title">默认关注管理</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="ui-panels.html">
-                    <i class="linecons-note"></i>
-                    <span class="title">内容管理</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="ui-panels.html">
-                            <span class="title">FEED管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.post.index') }}">
-                            <span class="title">内容管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-tabs-accordions.html">
-                            <span class="title">关键词管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-modals.html">
-                            <span class="title">内容审核</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="ui-widgets.html">
-                    <i class="linecons-star"></i>
-                    <span class="title">消息推送</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="mailbox-main.html">
-                            <span class="title">通知群发</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailbox-compose.html">
-                            <span class="title">消息推送</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailbox-message.html">
-                            <span class="title">每日推送</span>
-                        </a>
-                    </li>
-                </ul>
-
-            </li>
-            <li>
-                <a href="mailbox-main.html">
-                    <i class="linecons-mail"></i>
-                    <span class="title">数据统计</span>
-                    <span class="label label-success pull-right">5</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="mailbox-main.html">
-                            <span class="title">Inbox</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailbox-compose.html">
-                            <span class="title">Compose Message</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailbox-message.html">
-                            <span class="title">View Message</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="tables-basic.html">
-                    <i class="linecons-database"></i>
-                    <span class="title">运营设置</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="tables-basic.html">
-                            <span class="title">虚拟用户管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tables-responsive.html">
-                            <span class="title">虚拟运营</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
         </ul>
         
     </div>

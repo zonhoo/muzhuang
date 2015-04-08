@@ -29,7 +29,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="panel panel-default">
-            <a class="btn btn-primary" href="{{ route('role.create') }}">新角色</a>
+            <a class="btn btn-primary" href="{{ route('admin.role.create') }}">新角色</a>
         </div>
     </div>
 </div>
@@ -115,15 +115,15 @@
                                 <td>{{ $role->display_name }}</td>
                                 <td>{{ $role->description }}</td>
                                 <td>
-                                    <a href="{{route('role.edit',$role->id)}}" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                    <a href="{{route('admin.role.edit',$role->id)}}" class="btn btn-secondary btn-sm btn-icon icon-left">
                                         编辑
                                     </a>
                                     
-                                    <a href="{{route('role.destroy',$role->id)}}" class="btn btn-danger btn-sm btn-icon icon-left">
+                                    <a href="{{route('admin.role.destroy',$role->id)}}" class="btn btn-danger btn-sm btn-icon icon-left">
                                         删除
                                     </a>
                                     
-                                    <a href="{{route('role.can',$role->id)}}" class="btn btn-info btn-sm btn-icon icon-left">
+                                    <a href="{{route('admin.role.can',$role->id)}}" class="btn btn-info btn-sm btn-icon icon-left">
                                         权限
                                     </a>
                                 </td>

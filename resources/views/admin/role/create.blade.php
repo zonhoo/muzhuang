@@ -46,7 +46,7 @@
             </div>
             <div class="panel-body">
                 
-                {!! Form::open(['route'=>'role.store','role'=>'form','class'=>'form-horizontal',]) !!}
+                {!! Form::open(['route'=>'admin.role.store','role'=>'form','class'=>'form-horizontal',]) !!}
                     
                     <div class="form-group @if($errors->first('name')) has-error @endif">
                         <label class="col-sm-2 control-label" for="field-1">角色</label>

@@ -38,22 +38,22 @@ Route::get('admin', 'Admin\AdminController@index');
 
 Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
     Route::get('user',[
-        'as'=>'user','uses'=>'UserController@index'
+        'as'=>'admin.user','uses'=>'UserController@index'
     ]);
     Route::get('user/create',[
-        'as'=>'user.create','uses'=>'UserController@create'
+        'as'=>'admin.user.create','uses'=>'UserController@create'
     ]);
     Route::post('user/store',[
-        'as'=>'user.store','uses'=>'UserController@store'
+        'as'=>'admin.user.store','uses'=>'UserController@store'
     ]);
     Route::get('user/{id}/edit',[
-        'as'=>'user.edit','uses'=>'UserController@edit'
+        'as'=>'admin.user.edit','uses'=>'UserController@edit'
     ]);
     Route::post('user/update',[
-        'as'=>'user.update','uses'=>'UserController@update'
+        'as'=>'admin.user.update','uses'=>'UserController@update'
     ]);
     Route::get('user/{id}/profile',[
-        'as'=>'user.profile','uses'=>'UserController@profile'
+        'as'=>'admin.user.profile','uses'=>'UserController@profile'
     ]);
 
              
@@ -61,55 +61,63 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
      *角色部分
      */
     Route::get('role',[
-        'as'=>'role','uses'=>'RoleController@index'
+        'as'=>'admin.role','uses'=>'RoleController@index'
     ]);
     Route::get('role/create',[
-        'as'=>'role.create','uses'=>'RoleController@create'
+        'as'=>'admin.role.create','uses'=>'RoleController@create'
     ]);
     Route::post('role/store',[
-        'as'=>'role.store','uses'=>'RoleController@store'
+        'as'=>'admin.role.store','uses'=>'RoleController@store'
     ]);
     Route::get('role/{id}/edit',[
-        'as'=>'role.edit','uses'=>'RoleController@edit'
+        'as'=>'admin.role.edit','uses'=>'RoleController@edit'
     ]);
     Route::post('role/update',[
-        'as'=>'role.update','uses'=>'RoleController@update'
+        'as'=>'admin.role.update','uses'=>'RoleController@update'
     ]);
     Route::get('role/{id}/can',[
-        'as'=>'role.can','uses'=>'RoleController@can'
+        'as'=>'admin.role.can','uses'=>'RoleController@can'
     ]);
     Route::post('role/updateCan',[
-        'as'=>'role.updateCan','uses'=>'RoleController@updateCan'
+        'as'=>'admin.role.updateCan','uses'=>'RoleController@updateCan'
     ]);
     Route::post('role/{id}/destroy',[
-        'as'=>'role.destroy','uses'=>'RoleController@destroy'
+        'as'=>'admin.role.destroy','uses'=>'RoleController@destroy'
     ]);
     /*
      * 权限部分
      *
      */
     Route::get('permission',[
-        'as'=>'permission','uses'=>'PermissionController@index'
+        'as'=>'admin.permission','uses'=>'PermissionController@index'
     ]);
     Route::get('permission/create',[
-        'as'=>'permission.create','uses'=>'PermissionController@create'
+        'as'=>'admin.permission.create','uses'=>'PermissionController@create'
     ]);
     Route::post('permission/store',[
-        'as'=>'permission.store','uses'=>'PermissionController@store'
+        'as'=>'admin.permission.store','uses'=>'PermissionController@store'
     ]);
     Route::get('permission/{id}/edit',[
-        'as'=>'permission.edit','uses'=>'PermissionController@edit'
+        'as'=>'admin.permission.edit','uses'=>'PermissionController@edit'
     ]);
     Route::post('permission/update',[
-        'as'=>'permission.update','uses'=>'PermissionController@update'
+        'as'=>'admin.permission.update','uses'=>'PermissionController@update'
     ]);
 
      ///
     Route::get('user/test',[
-        'as'=>'user.test','uses'=>'UserController@test'
+        'as'=>'admin.user.test','uses'=>'UserController@test'
     ]);
 
     Route::resource('post', 'PostController');
+
+    // 操作文件
+    Route::get('keyword',[
+        'as'=>'admin.keyword','uses'=>'KeywordController@index'
+    ]);
+    Route::post('keyword',[
+        'as'=>'admin.keyword.store','uses'=>'KeywordController@putContent'
+    ]);
 });
 
 /*文件上传*/

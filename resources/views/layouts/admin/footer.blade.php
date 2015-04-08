@@ -8,9 +8,9 @@
                     
                     <!-- Add your copyright text here -->
                     <div class="footer-text">
-                        &copy; 2015
-                        <strong>Dashboard</strong>
-                        theme by <a href="http://www.chihuo1408.com" target="_blank">Mr. lv</a>
+                        &copy; {{trans('admin.footer_copy')}}
+                        <strong>{{trans('admin.footer_theme')}}</strong>
+                        {{trans('admin.footer_theme_by')}} <a href="http://www.chihuo1408.com" target="_blank">{{trans('admin.footer_theme_author')}}</a>
                     </div>
                     
                     

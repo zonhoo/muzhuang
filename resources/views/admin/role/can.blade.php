@@ -87,7 +87,7 @@
                          });
                        });
                     </script>
-                {!! Form::open(['route'=>'role.updateCan','role'=>'form','class'=>'form-horizontal',]) !!}
+                {!! Form::open(['route'=>'admin.role.updateCan','role'=>'form','class'=>'form-horizontal',]) !!}
                 {!! Form::hidden('role_id',$role->id) !!}
                 <table class="table table-bordered table-striped" id="example-2">
                     <thead>

@@ -115,7 +115,7 @@
             
             //Create Permissions
             $manageUsers = new Permission;
-            $manageUsers->name = 'manage.user';
+            $manageUsers->name = 'admin.user';
             $manageUsers->display_name = 'Manage Users';
             $manageUsers->save();
             

@@ -46,7 +46,7 @@
             </div>
             <div class="panel-body">
                 
-                {!! Form::open(['route'=>'user.store','role'=>'form','class'=>'form-horizontal',]) !!}
+                {!! Form::open(['route'=>'admin.user.store','role'=>'form','class'=>'form-horizontal',]) !!}
                     
                     <div class="form-group @if($errors->first('name')) has-error @endif">
                         <label class="col-sm-2 control-label" for="name" >用户名</label>

@@ -4,15 +4,18 @@ use Illuminate\Html;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 use App\Repositories\PostRepository;
+use App\Repositories\KeywordRepository;
 use App\Post;
 class PostController extends BaseController {
 
     protected $post;
+    protected $keyword;
 
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository,KeywordRepository $keyword)
     {
         parent::__construct();
         $this->post = $postRepository;
+        $this->keyword = $keyword;
     }
 
 	/**
@@ -61,6 +64,10 @@ class PostController extends BaseController {
 	public function show($id)
 	{
 		//
+        $post = Post::find($id);
+        $keyword = '发呆,放假';
+        $post->body = $this->keyword->filterStr($keyword,$post->body);
+        echo $post->body;
 	}
 
 	/**
@@ -73,6 +80,7 @@ class PostController extends BaseController {
 	{
 		//
         $post = Post::find($id);
+
         return view('admin.post.edit',compact('id','post'));
 	}
 

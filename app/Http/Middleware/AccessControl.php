@@ -3,7 +3,7 @@
 use Closure;
 use App\Role;
 use Illuminate\Contracts\Auth\Guard;
-    use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;
 class AccessControl {
     /**
      * The Guard implementation.
@@ -42,9 +42,8 @@ class AccessControl {
             if(!$user->hasRole($roles)) redirect()->guest('auth/login');
             //创始人拥有所有权限
             if(!$user->hasRole('Founder')){
-                $can = Route::currentRouteName();//当前route-name  exp:user-test
-                //$can = Route::currentRouteAction();
-                $can = 'manage-'.$can;
+                $can = Route::currentRouteName();//当前routeName  exp:user.test
+
                 $res = $request->user()->can($can);
                 if(!$res) return view('admin.noaccess');
             }

@@ -42,7 +42,10 @@
 		<div class="main-content">
             <!--navbar-->
 			@include('layouts.admin.navbar')
+
             @yield('page-title')
+
+            @yield('flash-message')
             <!--content-->
             @yield('content')
 

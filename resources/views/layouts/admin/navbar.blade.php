@@ -305,9 +305,9 @@
                                 </a>
                             </li>
                             <li class="last">
-                                <a href="extra-lockscreen.html">
+                                <a href="{{ url('/auth/logout') }}">
                                     <i class="fa-lock"></i>
-                                    Logout
+                                    退出
                                 </a>
                             </li>
                         </ul>

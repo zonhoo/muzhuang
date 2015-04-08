@@ -30,7 +30,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="panel panel-default">
-            <a class="btn btn-primary" href="{{ route('user.create') }}">新用户</a>
+            <a class="btn btn-primary" href="{{ route('admin.user.create') }}">新用户</a>
         </div>
     </div>
 </div>
@@ -115,7 +115,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}<br/>{{ $user->updated_at}}</td>
                                 <td>
-                                    <a href="{{route('user.edit',$user->id)}}" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                    <a href="{{route('admin.user.edit',$user->id)}}" class="btn btn-secondary btn-sm btn-icon icon-left">
                                         编辑
                                     </a>
                                     
@@ -123,7 +123,7 @@
                                         删除
                                     </a>
                                     
-                                    <a href="{{route('user.profile',$user->id)}}" class="btn btn-info btn-sm btn-icon icon-left">
+                                    <a href="{{route('admin.user.profile',$user->id)}}" class="btn btn-info btn-sm btn-icon icon-left">
                                         查看
                                     </a>
                                 </td>

@@ -46,7 +46,7 @@
             </div>
             <div class="panel-body">
                 
-                {!! Form::open(['route'=>'permission.update','role'=>'form','class'=>'form-horizontal',]) !!}
+                {!! Form::open(['route'=>'admin.permission.update','role'=>'form','class'=>'form-horizontal',]) !!}
                     {!! Form::hidden('id',$permission->id) !!}
                     
                     <div class="form-group @if($errors->first('name')) has-error @endif">
