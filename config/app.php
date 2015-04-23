@@ -135,10 +135,13 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+        'Illuminate\Workbench\WorkbenchServiceProvider',//扩展包开发工具
 
         'Illuminate\Html\HtmlServiceProvider',
         'Zizaco\Entrust\EntrustServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
+        //'Mmanos\Search\SearchServiceProvider',
+
 
 		/*
 		 * Application Service Providers...
@@ -149,6 +152,10 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
         'App\Providers\ComposerServiceProvider',//视图组件
+
+        //'App\Providers\SocialiteServiceProvider',//第三方登录组件
+        'Lvdingtao\Weibo\WeiboServiceProvider',
+
 
 	],
 
@@ -201,6 +208,8 @@ return [
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Form'      => 'Illuminate\Html\FormFacade',
         'Flash'     => 'Laracasts\Flash\Flash',
+        'Weibo'     => 'Lvdingtao\Weibo\Facades\Weibo',
+        'Search'    => 'Mmanos\Search\Facade',
 
 	],
 

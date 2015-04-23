@@ -28,15 +28,24 @@ Route::group(['namespace' => 'Home'],function(){
     Route::post('unfollow',[
         'as'=>'unfollow','uses'=>'FollowController@destroy'
     ]);
+
+    Route::get('search',[
+        'as'=>'search','uses'=>'SearchController@index'
+    ]);
+    Route::get('search/result',[
+        'as'=>'search.search','uses'=>'SearchController@search'
+    ]);
 });
 
 
 
 
 //==================================================================//
-Route::get('admin', 'Admin\AdminController@index');
 
 Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
+
+    Route::get('/', 'AdminController@index');
+
     Route::get('user',[
         'as'=>'admin.user','uses'=>'UserController@index'
     ]);
@@ -109,7 +118,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
         'as'=>'admin.user.test','uses'=>'UserController@test'
     ]);
 
-    Route::resource('post', 'PostController');
+    Route::resource('post', 'PostController',['names'=>['index'=>'admin.post']]);
 
     // 操作文件
     Route::get('keyword',[
@@ -118,9 +127,36 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
     Route::post('keyword',[
         'as'=>'admin.keyword.store','uses'=>'KeywordController@putContent'
     ]);
+
+    //上传封面
+    Route::resource('cover', 'CoverController',['names'=>['index'=>'admin.cover']]);
+    //App版本
+    Route::resource('version', 'VersionController',['names'=>['index'=>'admin.version']]);
 });
 
 /*文件上传*/
 Route::post('upload',[
     'as'=>'upload','uses'=>'UploadController@upload'
 ]);
+Route::post('uploadfile',[
+    'as'=>'uploadfile','uses'=>'UploadController@upload'
+]);
+
+/*API*/
+
+Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
+
+    //Route::controllers(['auth'=>'AuthController']);
+
+    Route::get('entry','SystemController@versionCode');
+
+    Route::get('posts/list/count/{count}/{offset?}/{order?}/{time?}','PostsController@getList');
+
+    Route::get('posts/paginate/{count}','PostsController@getArticlePage');
+
+    //Route::resource('posts','PostsController');
+
+
+});
+
+//Route::get('search/{keyword}','SearchController@search');

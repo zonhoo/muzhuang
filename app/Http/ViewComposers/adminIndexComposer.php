@@ -15,6 +15,7 @@
          */
         
         protected $auth;
+
         
         /**
          * Create a new profile composer.
@@ -36,22 +37,7 @@
          */
         public function compose(View $view)
         {
-            //
-            $menus = Menu::all();
-            //dd($menus);
-            $category = new CategoryRepository;
-            $categorize = $category->getTop()->toArray();
-            foreach($categorize as $key=>$value){
-                $child = $category->getChild($value['id'])->toArray();
-                $categorize[$key]['child'] = $child;
-
-            }
-            $currentname = Route::currentRouteName();
-            $currentpid = $category->getFidByCurrentName($currentname);
-            $view->with('auth', $this->auth->user())
-                 ->with('categorize',$categorize)
-                 ->with('currentname',$currentname)
-                 ->with('currentpid',$currentpid);
+            $view->with('auth', $this->auth->user());
         }
     
     }

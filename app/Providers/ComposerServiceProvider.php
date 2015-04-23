@@ -14,12 +14,8 @@
         {
             // 使用类来指定视图组件
             View::composer('*', 'App\Http\ViewComposers\adminIndexComposer');
-            
-            // 使用闭包来指定视图组件
-            View::composer('dashboard', function()
-            {
-               
-            });
+
+            View::composer('admin*','App\Http\ViewComposers\sidebarComposer');
         }
         
         /**

@@ -23,8 +23,11 @@ class CategoryRepository{
         return $tree;
     }
 
+    public function getAll(){
+        return Menu::all();
+    }
     public function getTop(){
-        return $this->getCategoryByFid();
+        return $this->getCategoryByFid(0);
     }
 
     public function getChild($id)

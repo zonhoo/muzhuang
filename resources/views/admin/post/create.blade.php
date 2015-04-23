@@ -194,7 +194,7 @@
                     <div class="modal-body">
                         <!-- Auto initialization -->
                         {!! Form::open(['route'=>['upload'],'role'=>'form','id'=>'dropZone','class'=>'dropzone','enctype'=>'multipart/form-data']) !!}
-
+                            {!! Form::hidden('type','posts') !!}
                         {!! Form::close() !!}
                     </div>
 

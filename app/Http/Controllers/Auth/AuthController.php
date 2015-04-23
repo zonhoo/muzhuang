@@ -35,4 +35,12 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+//    public function getLogin(){
+//        return redirect($this->getCallBack());
+//    }
+//
+//    public function getCallBack()
+//    {
+//        return config('services.weibo.redirect');
+//    }
 }

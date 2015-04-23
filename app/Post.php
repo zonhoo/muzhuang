@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;//软删除
 class Post extends Model {
 
 	//
+    use SoftDeletes;
     protected $guarded = array('id');
 
     protected $dates = ['deleted_at'];

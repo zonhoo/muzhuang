@@ -54,8 +54,8 @@ class CreateMenusTable extends Migration {
             //setting system
             array('name'=>'setting_system_base','route_name'=>'','icon'=>'','fid'=>'1'),
             array('name'=>'setting_system_api','route_name'=>'','icon'=>'','fid'=>'1'),
-            array('name'=>'setting_system_version','route_name'=>'','icon'=>'','fid'=>'1'),
-            array('name'=>'setting_system_bootstrap','route_name'=>'','icon'=>'','fid'=>'1'),
+            array('name'=>'setting_system_version','route_name'=>'admin.version','icon'=>'','fid'=>'1'),
+            array('name'=>'setting_system_bootstrap','route_name'=>'admin.cover','icon'=>'','fid'=>'1'),
 
             //manage ucenter
             array('name'=>'setting_ucenter_users','route_name'=>'admin.user','icon'=>'','fid'=>'2'),
@@ -66,7 +66,7 @@ class CreateMenusTable extends Migration {
 
             //manage content
             array('name'=>'setting_content_feeds','route_name'=>'','icon'=>'','fid'=>'3'),
-            array('name'=>'setting_content_posts','route_name'=>'admin.post.index','icon'=>'','fid'=>'3'),
+            array('name'=>'setting_content_posts','route_name'=>'admin.post','icon'=>'','fid'=>'3'),
             array('name'=>'setting_content_keywords','route_name'=>'admin.keyword','icon'=>'','fid'=>'3'),
             array('name'=>'setting_message_check','route_name'=>'','icon'=>'','fid'=>'3'),
 

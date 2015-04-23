@@ -20,7 +20,7 @@ class AddFieldsToUsersTalbe extends Migration {
 			//
           $table->string('telephone')->nullable()->index();
           $table->string('true_name')->nullable();
-          $table->string('photo_url')->nullable();
+          $table->string('avatar')->nullable();
           $table->text('signature')->nullable();
           $table->tinyInteger('sex')->default(0);
           $table->integer('follower_count')->default(0)->index();
@@ -44,7 +44,7 @@ class AddFieldsToUsersTalbe extends Migration {
 		Schema::table('users', function(Blueprint $table)
 		{
 			//
-            $table->dropColumn(array('telephone', 'true_name', 'photo_url','signature','sex','follower_count','following_count','publish_count','like_count','is_banned','deleted_at'));
+            $table->dropColumn(array('telephone', 'true_name', 'avatar','signature','sex','follower_count','following_count','publish_count','like_count','is_banned','deleted_at'));
 		});
 	}
 

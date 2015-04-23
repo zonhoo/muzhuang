@@ -2,4 +2,4 @@
 /node_modules
 .env
 /storage/app/filter.txt
-/public/uploads/posts
+/public/uploads

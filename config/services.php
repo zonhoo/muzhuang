@@ -34,4 +34,10 @@ return [
 		'secret' => '',
 	],
 
+    'weibo' => [
+        'client_id' => env('WB_AKEY'),
+        'client_secret' => env('WB_SKEY'),
+        'redirect' => env('WB_CALLBACK_URL'),
+    ],
+
 ];

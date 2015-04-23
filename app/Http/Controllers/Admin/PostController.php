@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\Cover;
 use Illuminate\Html;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
@@ -108,6 +109,10 @@ class PostController extends BaseController {
 	public function destroy($id)
 	{
 		//
+        $post = Post::find(1);
+
+        $post->delete();
+
 	}
 
 }
