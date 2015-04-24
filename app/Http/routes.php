@@ -152,7 +152,9 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
 
     Route::get('posts/list/count/{count}/{offset?}/{order?}/{time?}','PostsController@getList');
 
-    Route::get('posts/paginate/{count}','PostsController@getArticlePage');
+    Route::get('posts/paginate/{count}/list','PostsController@getArticlePage');
+
+    Route::get('posts/{id}','PostsController@show');
 
     //Route::resource('posts','PostsController');
 

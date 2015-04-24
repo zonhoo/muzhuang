@@ -110,8 +110,9 @@ class PostsController extends BaseController {
             $time = date('Y-m-d h:i:s',$date);
         }
         //dd($time);
+        $select = ['id','user_id','title','photo','favorite_count','share_count','view_count','commit_count','created_at'];
 
-        $post = DB::table('posts')->select(['id','user_id','title','photo','favorite_count','share_count','view_count','commit_count','created_at'])->skip($offset)->where('created_at','>',$time)->orderBy($order,'desc')->take($count)->get();
+        $post = DB::table('posts')->select($select)->skip($offset)->where('created_at','>',$time)->orderBy($order,'desc')->take($count)->get();
 
         return response()->json($post);
     }
@@ -125,8 +126,9 @@ class PostsController extends BaseController {
 
     public function getArticlePage($count)
     {
-        $post = Post::paginate($count);
 
+        $select = ['id','user_id','title','photo','favorite_count','share_count','view_count','commit_count','created_at'];
+        $post = Post::select($select)->paginate($count);
         return response()->json($post);
     }
 
