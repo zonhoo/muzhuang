@@ -158,6 +158,18 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
 
     //Route::resource('posts','PostsController');
 
+    /*
+     * 登录
+     * */
+    Route::get('login/{socialiteName}','AuthController@login');
+
+    //用户喜欢接口
+    Route::get('user/{postid}/like','UserController@userLikePost');
+    Route::get('user/{postid}/unlike','UserController@userUnlikePost');
+    Route::get('user/likes','UserController@getUserlikePosts');
+    //用户中心接口
+    Route::resource('user','UserController');
+
 
 });
 

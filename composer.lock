@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6e28342ac2aaa53186d55f58ca75dbaa",
+    "hash": "dbf422bf1b0633ee580caf4fd6b91150",
     "packages": [
         {
             "name": "caouecs/laravel4-lang",
@@ -558,53 +558,6 @@
                 }
             ],
             "time": "2015-01-01 16:31:18"
-        },
-        {
-            "name": "illuminate/workbench",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/workbench.git",
-                "reference": "e0a39eb4a4e35c18bf6be57e3891e543d38b965a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/workbench/zipball/e0a39eb4a4e35c18bf6be57e3891e543d38b965a",
-                "reference": "e0a39eb4a4e35c18bf6be57e3891e543d38b965a",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/filesystem": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0",
-                "symfony/finder": "2.6.*"
-            },
-            "require-dev": {
-                "illuminate/console": "~5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Workbench\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "The Illuminate Workbench package.",
-            "time": "2014-11-10 19:21:41"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -1167,12 +1120,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liaol/socialite-cn.git",
-                "reference": "cb4d8f15a5df8f09ad3beb069f842eeeb6798591"
+                "reference": "af8097addbccafcb4b7c71533e1e84d9547f61e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liaol/socialite-cn/zipball/cb4d8f15a5df8f09ad3beb069f842eeeb6798591",
-                "reference": "cb4d8f15a5df8f09ad3beb069f842eeeb6798591",
+                "url": "https://api.github.com/repos/liaol/socialite-cn/zipball/af8097addbccafcb4b7c71533e1e84d9547f61e0",
+                "reference": "af8097addbccafcb4b7c71533e1e84d9547f61e0",
                 "shasum": ""
             },
             "require": {
@@ -1199,7 +1152,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2015-03-27 03:35:58"
+            "time": "2015-04-25 02:36:28"
         },
         {
             "name": "monolog/monolog",
@@ -2379,49 +2332,6 @@
             "time": "2014-12-05 15:19:21"
         },
         {
-            "name": "xiaosier/libweibo",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/xiaosier/libweibo.git",
-                "reference": "61be700cd15f4c53496b998c8ae8fdd73084eb38"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/xiaosier/libweibo/zipball/61be700cd15f4c53496b998c8ae8fdd73084eb38",
-                "reference": "61be700cd15f4c53496b998c8ae8fdd73084eb38",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.0.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "saetv2.ex.class.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "lazypeople",
-                    "email": "hfutming@gmail.com",
-                    "homepage": "http://lazy.changes.com.cn",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP sdk for Weibo open platform",
-            "homepage": "http://github.com/xiaosier/libweibo",
-            "keywords": [
-                "sdk",
-                "weibo"
-            ],
-            "time": "2015-03-26 03:17:59"
-        },
-        {
             "name": "zizaco/entrust",
             "version": "dev-laravel-5",
             "source": {
@@ -2707,16 +2617,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.4.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "8724cd239f8ef4c046f55a3b18b4d91cc7f3e4c5"
+                "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8724cd239f8ef4c046f55a3b18b4d91cc7f3e4c5",
-                "reference": "8724cd239f8ef4c046f55a3b18b4d91cc7f3e4c5",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
+                "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
                 "shasum": ""
             },
             "require": {
@@ -2763,7 +2673,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2015-03-27 19:31:25"
+            "time": "2015-04-27 22:15:08"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3564,8 +3474,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "zizaco/entrust": 20,
-        "xiaosier/libweibo": 20,
-        "illuminate/workbench": 20,
         "liaol/socialite-cn": 20
     },
     "prefer-stable": false,

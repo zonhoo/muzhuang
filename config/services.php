@@ -34,10 +34,20 @@ return [
 		'secret' => '',
 	],
 
+    'github' => [
+        'client_id' => env('Client_ID'),
+        'client_secret' => env('Client_Secret'),
+        'redirect' => env('GITHUB_CALLBACK_URL'),
+    ],
     'weibo' => [
         'client_id' => env('WB_AKEY'),
         'client_secret' => env('WB_SKEY'),
         'redirect' => env('WB_CALLBACK_URL'),
+    ],
+    'weixin'=> [
+        'client_id' => env('WECHAT_AKEY'),
+        'client_secret' => env('WECHAT_SKEY'),
+        'redirect' => env('WECHAT_GITHUB_CALLBACK_URL'),
     ],
 
 ];
