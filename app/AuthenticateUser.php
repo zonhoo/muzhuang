@@ -28,6 +28,12 @@ class AuthenticateUser {
     public function execute($hasCode,$socialiteName,AuthenticateUserListener $listener)
     {
         if(!$hasCode) return $this->getAuthorizationFirst($socialiteName);
+//        $socialiteUser = $this->getSocialiteUser($socialiteName);
+//        $user = $this->findUserById($this->getId($socialiteName,$socialiteUser),$socialiteName);
+//
+//        if(!$user){
+//            $user = $this->users->findByUsernameOrCreate($socialiteUser,$socialiteName);
+//        }
         $user = $this->users->findByUsernameOrCreate($this->getSocialiteUser($socialiteName),$socialiteName);
         $this->auth->login($user);
         if ($this->auth->check())
@@ -45,5 +51,28 @@ class AuthenticateUser {
     private function getSocialiteUser($socialiteName)
     {
         return $this->socialite->with($socialiteName)->user();
+    }
+
+    public function findUserById($id,$socialiteName){
+        if($socialiteName=='weibo'){
+            $where = 'weibo_id';
+        }elseif($socialiteName=='weixin'){
+            $where = 'weixin_id';
+        }elseif($socialiteName=='github'){
+            $where = 'name';
+        }
+
+         return User::where($where,'=',$id)->first();
+    }
+
+    public function getId($socialiteName,$user){
+
+        if($socialiteName=='weibo'){
+            return $user->id;
+        }elseif($socialiteName=='weixin'){
+            return $user->openid;
+        }elseif($socialiteName=='github'){
+            return $user->id;
+        }
     }
 } 

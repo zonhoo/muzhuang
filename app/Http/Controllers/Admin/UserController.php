@@ -8,6 +8,7 @@
     use App\Http\Requests\UpdateUserProfileRequest;
     use App\Repositories\UserRepository;
     use Illuminate\Support\Facades\Route;
+    use Laracasts\Flash\Flash;
     class UserController extends BaseController{
         protected $user;
         
@@ -32,17 +33,25 @@
         public function store(StoreUserProfileRequest $request)
         {
             $user = $this->user->create($request->all());
-            if($user->id) $result = '添加成功';
-            else $result = '添加失败';
-            return $result;
+
+            if($user->id) {
+                flash()->success('发布成功');
+            }else{
+                flash()->error('发布失败');
+            }
+            return redirect()->back();
         }
 
         public function update(UpdateUserProfileRequest $request)
         {
             $user = $this->user->update($request->all());
-            if($user->id) $result = '更新成功';
-            else $result = '更新失败';
-            return $result;
+            if($user->id) {
+                flash()->success('更新成功');
+            }else{
+                flash()->error('更新失败');
+            }
+            return redirect()->back();
+
         }
 
         public function edit($id)

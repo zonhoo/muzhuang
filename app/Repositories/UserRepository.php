@@ -52,6 +52,12 @@ class UserRepository {
                 'avatar' => $userData->headimgurl,
                 'weixin_id'=>$userData->openid,
             ]);
+        }elseif($socialiteName='github'){
+            return User::firstOrCreate([
+                'name'=>$userData->id,
+                'nickname'=>$userData->nickname,
+                'avatar'=>$userData->avatar
+            ]);
         }
 
     }

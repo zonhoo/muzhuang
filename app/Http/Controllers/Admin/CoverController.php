@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Admin;
 use App\Cover;
 use App\Repositories\CoverRepository;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class CoverController extends BaseController{
 
@@ -34,8 +35,12 @@ class CoverController extends BaseController{
     public function store(Request $request)
     {
         $result = $this->cover->create($request->all());
-        if($result->id) return '新建成功';
-        else return '新建失败';
+        if($result->id) {
+            flash()->success('添加成功');
+        }else{
+            flash()->error('添加失败');
+        }
+        return redirect()->back();
     }
 
     public function edit($id)
@@ -54,5 +59,9 @@ class CoverController extends BaseController{
         $cover = Cover::find(1);
 
         $cover->delete();
+
+        flash()->success('删除成功');
+
+        return redirect()->back();
     }
 } 

@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Repositories\PostRepository;
 use App\Repositories\KeywordRepository;
 use App\Post;
+use Laracasts\Flash\Flash;
 class PostController extends BaseController {
 
     protected $post;
@@ -52,8 +53,12 @@ class PostController extends BaseController {
 	{
 		//
         $result = $this->post->create($requests->all());
-        if($result->id) return '新建成功';
-        else return '新建失败';
+        if($result->id) {
+            flash()->success('发布成功');
+        }else{
+            flash()->error('发布失败');
+        }
+        return redirect()->back();
 	}
 
 	/**
@@ -95,8 +100,12 @@ class PostController extends BaseController {
 	{
 		//
         $result = $this->post->update($postRequest->all(),$id);
-        if($result->id) return '更新成功';
-        else return '更新失败';
+        if($result->id) {
+            flash()->success('修改成功');
+        }else{
+            flash()->error('修改失败');
+        }
+        return redirect()->back();
 
 	}
 
@@ -112,7 +121,8 @@ class PostController extends BaseController {
         $post = Post::find(1);
 
         $post->delete();
-
+        flash()->success('删除成功');
+        return redirect()->back();
 	}
 
 }

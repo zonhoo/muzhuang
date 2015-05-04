@@ -206,6 +206,7 @@ return [
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Form'      => 'Illuminate\Html\FormFacade',
         'Flash'     => 'Laracasts\Flash\Flash',
+        'Socialize' => 'Laravel\Socialite\Facades\Socialite',
 
 
 	],
