@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dbf422bf1b0633ee580caf4fd6b91150",
+    "hash": "ea70520c3542b0ffc17634909b72e511",
     "packages": [
         {
             "name": "caouecs/laravel4-lang",
@@ -1116,16 +1116,16 @@
         },
         {
             "name": "liaol/socialite-cn",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liaol/socialite-cn.git",
-                "reference": "af8097addbccafcb4b7c71533e1e84d9547f61e0"
+                "reference": "e0a2451ac4d6560f1f8101b56543cf08fda3f9d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liaol/socialite-cn/zipball/af8097addbccafcb4b7c71533e1e84d9547f61e0",
-                "reference": "af8097addbccafcb4b7c71533e1e84d9547f61e0",
+                "url": "https://api.github.com/repos/liaol/socialite-cn/zipball/e0a2451ac4d6560f1f8101b56543cf08fda3f9d0",
+                "reference": "e0a2451ac4d6560f1f8101b56543cf08fda3f9d0",
                 "shasum": ""
             },
             "require": {
@@ -1152,7 +1152,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2015-04-25 02:36:28"
+            "time": "2015-04-25 02:33:49"
         },
         {
             "name": "monolog/monolog",
@@ -1320,16 +1320,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v1.2.2",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "08f97eb4efa029e2fafb6d8c98b71731bf0cf621"
+                "reference": "dff239267fd1befa1cd40430c9ed12591aa720ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/08f97eb4efa029e2fafb6d8c98b71731bf0cf621",
-                "reference": "08f97eb4efa029e2fafb6d8c98b71731bf0cf621",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/dff239267fd1befa1cd40430c9ed12591aa720ca",
+                "reference": "dff239267fd1befa1cd40430c9ed12591aa720ca",
                 "shasum": ""
             },
             "require": {
@@ -1339,7 +1339,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -1361,7 +1361,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2015-04-03 14:33:59"
+            "time": "2015-05-02 15:40:40"
         },
         {
             "name": "psr/log",
@@ -2923,16 +2923,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.6.4",
+            "version": "4.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "163232991e652e6efed2f8470326fffa61e848e2"
+                "reference": "3afe303d873a4d64c62ef84de491b97b006fbdac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/163232991e652e6efed2f8470326fffa61e848e2",
-                "reference": "163232991e652e6efed2f8470326fffa61e848e2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3afe303d873a4d64c62ef84de491b97b006fbdac",
+                "reference": "3afe303d873a4d64c62ef84de491b97b006fbdac",
                 "shasum": ""
             },
             "require": {
@@ -2991,7 +2991,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-04-11 05:23:21"
+            "time": "2015-04-29 15:18:52"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3473,8 +3473,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zizaco/entrust": 20,
-        "liaol/socialite-cn": 20
+        "zizaco/entrust": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

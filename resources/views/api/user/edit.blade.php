@@ -7,11 +7,10 @@
  */
 
  ?>
- <form method="post" action="{{route('api.v1.user.update',$user->id)}}">
-    <input name="_method" type="hidden" value="PATCH">
-    <input type="hidden" name="_token" value="{{$token}}">
+ <form method="PATCH" action="{{route('api.v1.user.update',$user->id)}}">
+
     <input name="nickname" value="{{$user->nickname}}"><br>
-    <input name="signature" value="{{$user->nickname}}"><br>
-    <input name="sex" value="{{$user->nickname}}"><br>
+    <input name="signature" value="{{$user->signature}}"><br>
+    <input name="sex" value="{{$user->sex}}"><br>
     <input type="submit" value="更新">
  </form>

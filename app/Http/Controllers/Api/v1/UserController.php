@@ -70,8 +70,7 @@ class UserController extends BaseController {
 	{
 		//
         $user = User::find($id);
-        $token = csrf_token();
-        return view('api.user.edit',compact('user','token'));
+        return view('api.user.edit',compact('user'));
 	}
 
 	/**
