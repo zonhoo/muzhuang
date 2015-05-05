@@ -7,7 +7,7 @@
  */
 
  ?>
- <form method="PATCH" action="{{route('api.v1.user.update',$user->id)}}">
+ <form method="post" action="{{route('api.v1.user.store')}}">
 
     <input name="nickname" value="{{$user->nickname}}"><br>
     <input name="signature" value="{{$user->signature}}"><br>
