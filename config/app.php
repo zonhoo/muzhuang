@@ -152,6 +152,8 @@ return [
 		'App\Providers\RouteServiceProvider',
         'App\Providers\ComposerServiceProvider',//视图组件
 
+        'Liaol\SocialiteCn\SocialiteCnServiceProvider',
+
 
 	],
 
@@ -204,8 +206,8 @@ return [
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Form'      => 'Illuminate\Html\FormFacade',
         'Flash'     => 'Laracasts\Flash\Flash',
-        'Weibo'     => 'Lvdingtao\Weibo\Facades\Weibo',
-        'Search'    => 'Mmanos\Search\Facade',
+        'Socialize' => 'Laravel\Socialite\Facades\Socialite',
+
 
 	],
 

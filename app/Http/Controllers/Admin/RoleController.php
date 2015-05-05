@@ -7,6 +7,7 @@
     use App\Repositories\RoleRepository;
     use App\Role;
     use App\Permission;
+    use Laracasts\Flash\Flash;
     class RoleController extends BaseController{
         
         protected $role;
@@ -37,25 +38,26 @@
         public function store(StoreRoleRequest $request)
         {
             $role = $this->role->create($request->all());
-            if($role->id){
-                $result = '添加成功';
+
+            if($role->id) {
+                flash()->success('发布成功');
             }else{
-                $result = '添加失败';
+                flash()->error('发布失败');
             }
-            
-            return $result;
+            return redirect()->back();
+
         }
         
         public function update(UpdateRoleRequest $request)
         {
             $role = $this->role->update($request->all());
-            if($role->id){
-                $result = '更新成功';
+            if($role->id) {
+                flash()->success('发布成功');
             }else{
-                $result = '更新失败';
+                flash()->error('发布失败');
             }
             
-            return redirect()->route('role.edit', $request->all()['id']);
+            return redirect()->route('admin.role.edit', $request->all()['id']);
         }
         
         public function destroy($id)

@@ -4,25 +4,25 @@
 <!-- Or class "fixed" to  always fix the footer to the end of page -->
 <footer class="main-footer sticky footer-type-1">
 				
-                <div class="footer-inner">
-                    
-                    <!-- Add your copyright text here -->
-                    <div class="footer-text">
-                        &copy; {{trans('admin.footer_copy')}}
-                        <strong>{{trans('admin.footer_theme')}}</strong>
-                        {{trans('admin.footer_theme_by')}} <a href="http://www.chihuo1408.com" target="_blank">{{trans('admin.footer_theme_author')}}</a>
-                    </div>
-                    
-                    
-                    <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
-                    <div class="go-up">
-                        
-                        <a href="#" rel="go-top">
-                            <i class="fa-angle-up"></i>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
+        <div class="footer-inner">
+
+            <!-- Add your copyright text here -->
+            <div class="footer-text">
+                &copy; {{trans('admin.footer_copy')}}
+                <strong>{{trans('admin.footer_theme')}}</strong>
+                {{trans('admin.footer_theme_by')}} <a href="http://www.chihuo1408.com" target="_blank">{{trans('admin.footer_theme_author')}}</a>
+            </div>
+
+
+            <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+            <div class="go-up">
+
+                <a href="#" rel="go-top">
+                    <i class="fa-angle-up"></i>
+                </a>
+
+            </div>
+
+        </div>
                 
 </footer>

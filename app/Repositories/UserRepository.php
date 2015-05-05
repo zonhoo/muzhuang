@@ -36,4 +36,29 @@ class UserRepository {
         $user->save();
         return $user;
     }
+
+    public function findByUsernameOrCreate($userData,$socialiteName)
+    {
+        if($socialiteName=='weibo'){
+            return User::firstOrCreate([
+                'name' => $userData->nickname,
+                'avatar' => $userData->avatar,
+                'weibo_id'=>$userData->id,
+                'signature'=>$userData->description,
+            ]);
+        }elseif($socialiteName=='weixin'){
+            return User::firstOrCreate([
+                'name' => $userData->nickname,
+                'avatar' => $userData->headimgurl,
+                'weixin_id'=>$userData->openid,
+            ]);
+        }elseif($socialiteName='github'){
+            return User::firstOrCreate([
+                'name'=>$userData->id,
+                'nickname'=>$userData->nickname,
+                'avatar'=>$userData->avatar
+            ]);
+        }
+
+    }
 } 

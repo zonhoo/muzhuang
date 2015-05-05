@@ -57,7 +57,8 @@ class PostsController extends BaseController {
         }else{
             $post->toArray();
         }
-
+        $post->view_count +=$post->view_count;
+        $post->save();
         return response()->json($post);
 	}
 
@@ -126,7 +127,6 @@ class PostsController extends BaseController {
 
     public function getArticlePage($count)
     {
-
         $select = ['id','user_id','title','photo','favorite_count','share_count','view_count','commit_count','created_at'];
         $post = Post::select($select)->paginate($count);
         return response()->json($post);

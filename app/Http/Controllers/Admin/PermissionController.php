@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers\Admin;
     
-    use Illuminate\Html;
-    use App\Permission;
-    use App\Http\Requests\UpdatePermissionRequest;
-    use App\Repositories\PermissionRepository;
+use Illuminate\Html;
+use App\Permission;
+use App\Http\Requests\UpdatePermissionRequest;
+use App\Repositories\PermissionRepository;
+use Laracasts\Flash\Flash;
     class PermissionController extends BaseController{
         
         protected $permission;
@@ -28,12 +29,13 @@
         public function store(StorePermissionPostRequest $request)
         {
             $permission = $this->permission->create($request->all());
-            if($permission->id){
-                $result = '添加成功！';
+
+            if($permission->id) {
+                flash()->success('添加成功');
             }else{
-                $result = '添加失败！';
+                flash()->error('添加失败');
             }
-            return $result;
+            return redirect()->back();
         }
         
         public function edit($id)
@@ -45,16 +47,16 @@
         public function update(UpdatePermissionRequest $request)
         {
             $permission = $this->permission->update($request->all());
-            if($permission->id){
-                $result = '更新成功！';
+            if($permission->id) {
+                flash()->success('更新成功');
             }else{
-                $result = '更新失败！';
+                flash()->error('更新失败');
             }
-            return $result;
+            return redirect()->back();
 
         }
         
-        public function destroy()
+        public function destroy($id)
         {
             
         }

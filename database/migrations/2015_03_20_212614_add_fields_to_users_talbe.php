@@ -18,6 +18,7 @@ class AddFieldsToUsersTalbe extends Migration {
 		Schema::table('users', function(Blueprint $table)
 		{
 			//
+          $table->string('nickname')->nullable()->index();
           $table->string('telephone')->nullable()->index();
           $table->string('true_name')->nullable();
           $table->string('avatar')->nullable();

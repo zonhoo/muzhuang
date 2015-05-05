@@ -1,20 +1,15 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use App\Repositories\VersionRepository;
-use App\Version;
 use Illuminate\Http\Request;
-use Laracasts\Flash\Flash;
 
-class VersionController extends Controller {
+class FeedbackController extends BaseController {
 
-    protected $version;
+    protected $feedback;
 
-    public function __construct(VersionRepository $repository)
+    public function __construct()
     {
-        $this->version = $repository;
+
     }
 
 	/**
@@ -25,8 +20,6 @@ class VersionController extends Controller {
 	public function index()
 	{
 		//
-        $versions = Version::all();
-        return view('admin.version.index',compact('versions'));
 	}
 
 	/**
@@ -37,7 +30,6 @@ class VersionController extends Controller {
 	public function create()
 	{
 		//
-        return view('admin.version.create');
 	}
 
 	/**
@@ -48,14 +40,6 @@ class VersionController extends Controller {
 	public function store(Request $request)
 	{
 		//
-        $result = $this->version->create($request->all());
-
-        if($result->id) {
-            flash()->success('新建成功');
-        }else{
-            flash()->error('新建失败');
-        }
-        return redirect()->back();
 	}
 
 	/**
