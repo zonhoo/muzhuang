@@ -43,8 +43,7 @@ class UserRepository {
             return User::firstOrCreate([
                 'name' => $userData->nickname,
                 'avatar' => $userData->avatar,
-                'weibo_id'=>$userData->id,
-                'signature'=>$userData->description,
+                'weibo_id'=>$userData->id
             ]);
         }elseif($socialiteName=='weixin'){
             return User::firstOrCreate([
