@@ -103,18 +103,16 @@ class PostsController extends BaseController {
      * @param  int  $date  文章发布时间
      * @return Response
      */
-    public function getList($count=20,$offset=1,$order='created_at',$date='')
+    public function getList()
     {
-        if($date==''){
-            $time = strtotime(date('Y-m-d',time()));
-        }else{
-            $time = date('Y-m-d h:i:s',$date);
-        }
-        //dd($time);
+
         $select = ['id','user_id','title','photo','favorite_count','share_count','view_count','commit_count','created_at'];
 
-        $post = DB::table('posts')->select($select)->skip($offset)->where('created_at','>',$time)->orderBy($order,'desc')->take($count)->get();
+        $post = DB::table('posts')->select($select)->whereRaw("date_format(created_at,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d')")->orderBy('created_at','desc')->get();
 
+        if(empty($post)){
+            $post = DB::table('posts')->select($select)->whereRaw('TO_DAYS(NOW())-TO_DAYS(created_at)=1')->orderBy('created_at','desc')->get();
+        }
         return response()->json($post);
     }
 

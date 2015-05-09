@@ -79,7 +79,7 @@
                         <label class="col-sm-1 control-label" for="cover_url">封面</label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="cover_url" class="form-control"  id="cover_url" placeholder="@if($errors->first('cover_url')) {{$errors->first('cover_url')}} @else 封面图片地址 @endif">
+                            <input type="text" name="cover_url" value="" class="form-control"  id="cover_url" placeholder="@if($errors->first('cover_url')) {{$errors->first('cover_url')}} @else 封面图片地址 @endif">
                         </div>
                         <div class="col-sm-1">
                             <a href="javascript:;" onclick="jQuery('#modal-2').modal('show');" class="btn btn-primary btn-single btn-sm">上传图片</a>
@@ -172,8 +172,7 @@
                         if (res.state=='success') {
                           alert('upload success!');
                           $('#preview').attr('src',res.url);
-                          $('#cover_url').val(res.url);
-                          $('#cover_url').attr("disabled",true);
+                          $('#cover_url').val('value',res.url);
                         }
                         else {
                           alert('upload failed!');

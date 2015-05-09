@@ -25,7 +25,7 @@ class VersionController extends Controller {
 	public function index()
 	{
 		//
-        $versions = Version::all();
+        $versions = Version::orderBy('created_at', 'desc')->get();
         return view('admin.version.index',compact('versions'));
 	}
 

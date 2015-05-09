@@ -1,36 +1,19 @@
-<?php namespace App\Http\Controllers\Api\v1;
+<?php namespace App\Http\Controllers\api\v1;
 
-use App\Http\Requests;
+use App\Feedback;
+
+use App\Repositories\FeedbackRespository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FeedbackController extends BaseController {
 
-    protected $feedback;
+    public $feedback;
 
-    public function __construct()
+    public function __construct(FeedbackRespository $feedbackRespository)
     {
-
+        $this->feedback = $feedbackRespository;
     }
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -39,51 +22,24 @@ class FeedbackController extends BaseController {
 	 */
 	public function store(Request $request)
 	{
-		//
-	}
+        //验证
+        $v = Validator::make($request->all(),[
+            'contact_type'=>'required',
+            'contact'=>'required',
+            'body'=>'required',
+        ]);
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
+        if($v->fails()){
+            return response()->json($v->errors());
+        }
 		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+        $feedback = $this->feedback->create($request->all());
+        if($feedback->id){
+            $result = ['msg'=>'submit success','err_code'=>'0'];
+        }else{
+            $result = ['msg'=>'submit failed','err_code'=>'1'];
+        }
+        return response()->json($result);
 	}
 
 }

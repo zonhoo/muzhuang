@@ -95,10 +95,10 @@ class UserController extends BaseController {
         }
 
         $user = User::find($id);
-        $user->nickname = $request->all()['nickname'];
-        $user->sex = $request->all()['sex'];
-        $user->area = $request->all()['area'];
-        $user->signature = $request->all()['signature'];
+        $user->nickname = $request->input('nickname');
+        $user->sex = $request->input('sex');
+        $user->area = $request->input('area');
+        $user->signature = $request->input('signature');
         $user->save();
         if($user->id){
             $result = ['msg'=>'update success','err_code'=>'0'];
@@ -130,9 +130,11 @@ class UserController extends BaseController {
         $user->likes()->attach($post_id); //@param $post_id
 
         $post = Post::find($post_id);
-        $post->like_count -=1;
+        $post->like_count +=1;
 
-        $result = ['msg'=>'like post success!','err_code'=>'0'];
+        $status = $this->userIsLike($post_id);
+
+        $result = ['msg'=>'like post success!','err_code'=>'0','status'=>$status];
         return response()->json($result);
 
     }
@@ -145,9 +147,10 @@ class UserController extends BaseController {
         $user = User::find($user_id);
         $user->likes()->detach($post_id);  //@param $post_id
         $post = Post::find($post_id);
-        $post->like_count +=1;
+        $post->like_count -=1;
+        $status = $this->userIsLike($post_id);
 
-        $result = ['msg'=>'unlike post success!','err_code'=>'0'];
+        $result = ['msg'=>'unlike post success!','err_code'=>'0','status'=>$status];
         return response()->json($result);
     }
 
@@ -162,4 +165,15 @@ class UserController extends BaseController {
         return response()->json($posts);
     }
 
+    public function userIsLike($post_id)
+    {
+        $post = Post::find($post_id);
+        $like = $post->users()->where('id','=',Auth::id())->first();
+        if($like){
+            $status = 1;
+        }else{
+            $status = 0;
+        }
+        return $status;
+    }
 }

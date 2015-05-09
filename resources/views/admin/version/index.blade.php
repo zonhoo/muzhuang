@@ -121,7 +121,7 @@
                     <th>标题</th>
                     <th>版本号</th>
                     <th>版本名</th>
-                    <th>更新时间</th>
+                    <th>上传时间</th>
                     <th>操作</th>
                 </tr>
             </thead>
@@ -136,7 +136,7 @@
                     <td>{{ $version->title }}</td>
                     <td>{{ $version->version_code }}</td>
                     <td>{{ $version->version_name}}</td>
-                    <td>{{ $version->update_at }}</td>
+                    <td>{{ $version->created_at }}</td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-black dropdown-toggle" data-toggle="dropdown">
@@ -144,13 +144,13 @@
                             </button>
                             <ul class="dropdown-menu dropdown-black" role="menu">
                                 <li>
-                                    <a href="{{route('admin.version.edit',$cover->id)}}">编辑</a>
+                                    <a href="{{route('admin.version.edit',$version->id)}}">编辑</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.version.destroy',$cover->id)}}">删除</a>
+                                    <a href="{{route('admin.version.destroy',$version->id)}}">删除</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.version.show',$cover->id)}}">查看</a>
+                                    <a href="{{route('admin.version.show',$version->id)}}">查看</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>

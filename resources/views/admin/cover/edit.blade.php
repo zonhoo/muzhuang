@@ -170,7 +170,6 @@
                           alert('upload success!');
                           $('#preview').attr('src',res.url);
                           $('#cover_url').val(res.url);
-                          $('#cover_url').attr("disabled",true);
                         }
                         else {
                           alert('upload failed!');

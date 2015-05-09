@@ -171,7 +171,6 @@
                           alert('upload success!');
                           $('#preview').attr('src',res.url);
                           $('#photo').val(res.url);
-                          $('#photo').attr("disabled",true);
                         }
                         else {
                           alert('upload failed!');

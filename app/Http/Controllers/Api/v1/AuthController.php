@@ -9,7 +9,9 @@
 use App\AuthenticateUser;
 use App\AuthenticateUserListener;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class AuthController extends Controller implements AuthenticateUserListener{
@@ -24,7 +26,8 @@ class AuthController extends Controller implements AuthenticateUserListener{
 
     public function userHasLoggedIn($user)
     {
-        return response()->json(['msg'=>'has logged in','status'=>'10002','err_code'=>'0']);
+        $user = Auth::user();
+        return response()->json(['msg'=>'has logged in','status'=>'10002','err_code'=>'0','user'=>$user]);
     }
 
     public function logout()

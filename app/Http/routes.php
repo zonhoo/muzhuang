@@ -39,7 +39,6 @@ Route::group(['namespace' => 'Home'],function(){
 
 
 
-
 //==================================================================//
 
 Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
@@ -150,7 +149,7 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
 
     Route::get('entry','SystemController@versionCode');
 
-    Route::get('posts/list/count/{count}/{offset?}/{order?}/{time?}','PostsController@getList');
+    Route::get('posts/daylist','PostsController@getList');
 
     Route::get('posts/paginate/{count}/list','PostsController@getArticlePage');
 
@@ -174,6 +173,15 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
     //用户中心接口
     Route::resource('user','UserController');
 
+    //用户反馈
+    Route::resource('feedback','FeedbackController',
+        ['only'=>['store']]);
+
+    //版本
+    Route::get('version','VersionController@getLastVersion');
+
+    //启动封面
+    Route::get('cover','CoverController@getLastCover');
 
 });
 
