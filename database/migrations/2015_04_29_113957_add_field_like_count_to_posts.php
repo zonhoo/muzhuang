@@ -15,6 +15,7 @@ class AddFieldLikeCountToPosts extends Migration {
 		Schema::table('posts', function(Blueprint $table)
 		{
 			$table->integer('like_count')->default(0)->index();
+            $table->string('subtitle')->index();
 		});
 	}
 
@@ -28,7 +29,7 @@ class AddFieldLikeCountToPosts extends Migration {
 		Schema::table('posts', function(Blueprint $table)
 		{
 			//
-            $table->dropColumn('like_count');
+            $table->dropColumn(['like_count','subtitle']);
 		});
 	}
 
