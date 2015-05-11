@@ -18,6 +18,7 @@ class PostRepository {
         return Post::create([
             'user_id' => Auth::id(),
             'title' => $data['title'],
+            'subtitle' => $data['subtitle'],
             'description' => $data['description'],
             'photo' => $data['photo'],
             'body' => $data['body']
@@ -29,6 +30,7 @@ class PostRepository {
         $post = Post::find($id);
         $post->user_id = Auth::id();
         $post->title = $data['title'];
+        $post->subtitle = $data['subtitle'];
         $post->description = $data['description'];
         $post->photo = $data['photo'];
         $post->body = $data['body'];

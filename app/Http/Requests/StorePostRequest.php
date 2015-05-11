@@ -23,7 +23,8 @@ class StorePostRequest extends Request {
 	{
 		return [
 			'title' => 'required|min:4|max:255|',
-            'photo' => 'required|url',
+            'subtitle' => 'required|max:12',
+            'photo' => 'required|url'
 		];
 	}
 

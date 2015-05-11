@@ -75,6 +75,16 @@
 
                     <div class="form-group-separator"></div>
 
+                    <div class="form-group @if($errors->first('subtitle')) has-error @endif">
+                        <label class="col-sm-1 control-label" for="subtitle">副标题</label>
+
+                        <div class="col-sm-11">
+                            <input type="text" name="subtitle" class="form-control" id="subtitle" placeholder="@if($errors->first('subtitle')) {{$errors->first('subtitle')}} @else 副标题(4个汉字) @endif">
+                        </div>
+                    </div>
+
+                    <div class="form-group-separator"></div>
+
                     <div class="form-group">
                         <label class="col-sm-1 control-label" for="field-2">描述</label>
 
@@ -112,10 +122,10 @@
                     <div class="form-group-separator"></div>
 
                     <div class="form-group">
-                        <label class="col-sm-1 control-label" for="field-5">内容</label>
+                        <label class="col-sm-1 control-label" for="body">内容</label>
 
                         <div class="col-sm-11">
-                            <textarea name="body" class="form-control ckeditor" rows="10"></textarea>
+                            <textarea name="body" id="body" class="form-control" rows="10"></textarea>
                         </div>
                     </div>
 
@@ -222,8 +232,18 @@
  @stop
  @section('script')
 
-     {!! Html::script('style/assets/js/ckeditor/ckeditor.js') !!}
-     {!! Html::script('style/assets/js/ckeditor/adapters/jquery.js') !!}
+      @section('script')
+          {!! Html::script('ckeditor/ckeditor.js') !!}
+          {!! Html::script('ckfinder/ckfinder.js') !!}
+          {!! Html::script('ckeditor/adapters/jquery.js') !!}
 
-     {!! Html::script('style/assets/js/dropzone/dropzone.min.js') !!}
+          {!! Html::script('style/assets/js/dropzone/dropzone.min.js') !!}
+     <script>
+          $( document ).ready( function() {
+          	$( 'textarea#body' ).ckeditor();
+          } );
+
+          var editor = CKEDITOR.replace( 'body' );
+          CKFinder.setupCKEditor( editor, '/ckfinder/' );
+     </script>
  @stop
