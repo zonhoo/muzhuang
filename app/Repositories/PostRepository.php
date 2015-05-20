@@ -20,6 +20,7 @@ class PostRepository {
             'title' => $data['title'],
             'subtitle' => $data['subtitle'],
             'description' => $data['description'],
+            'is_checked' => 0,
             'photo' => $data['photo'],
             'body' => $data['body']
         ]);

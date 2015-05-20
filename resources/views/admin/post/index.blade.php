@@ -20,7 +20,6 @@
                   <a href="dashboard-1.html"><i class="fa-home"></i>Dashboard</a>
               </li>
               <li>
-
                   <a href="tables-basic.html">内容管理</a>
               </li>
               <li class="active">
@@ -153,7 +152,11 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="#">其他</a>
+                                @if($post->is_checked==0)
+                                    <a href="{{route('admin.post.check',$post->id)}}">审核</a>
+                                @else
+                                    <a>已审核</a>
+                                @endif
                                 </li>
                             </ul>
                         </div>
