@@ -58,6 +58,5 @@ class UserRepository {
                 'avatar'=>$userData->avatar
             ]);
         }
-
     }
 } 

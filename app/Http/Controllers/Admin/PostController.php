@@ -109,6 +109,22 @@ class PostController extends BaseController {
 
 	}
 
+    /*
+     * 文章审核
+     * */
+    public function check($id)
+    {
+        $post = Post::find($id);
+        $post->is_checked = 1;
+        $post->save();
+        if($post->id) {
+            flash()->success('审核通过');
+        }else{
+            flash()->error('审核失败');
+        }
+        return redirect()->back();
+    }
+
 	/**
 	 * Remove the specified resource from storage.
 	 *

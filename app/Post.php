@@ -14,4 +14,21 @@ class Post extends Model {
     {
         return $this->belongsTo('App\User');
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany('App\User','like_user','post_id','user_id');
+    }
+
+    //修改器
+    public function getSubtitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function setSubtitleAttribute($value)
+    {
+
+        $this->attributes['subtitle'] = $value==null?'':$value;
+    }
 }

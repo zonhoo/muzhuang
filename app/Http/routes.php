@@ -117,6 +117,10 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
         'as'=>'admin.user.test','uses'=>'UserController@test'
     ]);
 
+    Route::get('post/{id}/check',[
+        'as'=>'admin.post.check','uses'=>'PostController@check'
+    ]);
+
     Route::resource('post', 'PostController',['names'=>['index'=>'admin.post']]);
 
     // 操作文件
@@ -154,6 +158,8 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
     Route::get('posts/paginate/{count}/list','PostsController@getArticlePage');
 
     Route::get('posts/{id}','PostsController@show');
+
+    Route::get('post/{postId}/likers','PostsController@getPostLikeUsers');
 
     //Route::resource('posts','PostsController');
 
