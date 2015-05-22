@@ -129,7 +129,11 @@ class PostsController extends BaseController {
         $post = Post::whereRaw('is_checked=1 and is_blocked=0')->orderBy('updated_at','desc')->paginate($count);
         return response()->json($post);
     }
-
+    /*
+     * 喜欢文章的用户列表
+     * @param int $postId 文章ID
+     * @return  users list
+     * */
     public function getPostLikeUsers($postId)
     {
         $post = Post::find($postId);
