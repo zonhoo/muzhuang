@@ -161,6 +161,9 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
 
     Route::get('post/{postId}/likers','PostsController@getPostLikeUsers');
 
+    //内容搜索
+    Route::get('search/{keyword}','SearchController@search');
+
     //Route::resource('posts','PostsController');
 
     /*
