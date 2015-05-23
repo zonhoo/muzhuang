@@ -166,7 +166,7 @@
 
             </tbody>
         </table>
-
+        {!! $posts->render() !!}
     </div>
 </div>
 
