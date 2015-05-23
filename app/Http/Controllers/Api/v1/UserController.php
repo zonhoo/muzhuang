@@ -127,6 +127,9 @@ class UserController extends BaseController {
     {
         $user_id = Auth::id();
         $user = User::find($user_id);
+        if($status = $this->userIsLike($post_id)){
+            return ['msg'=>'you had like this post!','err_code'=>'0','status'=>$status];
+        }
         $user->likes()->attach($post_id); //@param $post_id
 
         $post = Post::find($post_id);
@@ -168,7 +171,7 @@ class UserController extends BaseController {
     public function userIsLike($post_id)
     {
         $post = Post::find($post_id);
-        $like = $post->users()->where('id','=',Auth::id())->first();
+        $like = $post->likes()->where('id','=',Auth::id())->first();
         if($like){
             $status = 1;
         }else{
