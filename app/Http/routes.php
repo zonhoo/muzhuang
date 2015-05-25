@@ -193,6 +193,7 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
     //用户反馈
     Route::resource('feedback','FeedbackController',
         ['only'=>['store']]);
+//    Route::post('feedback','FeedbackController@store');
 
     //版本
     Route::get('version','VersionController@getLastVersion');
