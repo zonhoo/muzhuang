@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration {
             $table->text('body');
             $table->string('type');
             $table->boolean('is_checked')->default(0)->index();
-            $table->boolean('is_blocked')->default(0)->index();
+            $table->boolean('is_locked')->default(0)->index();
             $table->integer('favorite_count')->default(0)->index();
             $table->integer('share_count')->default(0)->index();
             $table->integer('view_count')->default(0)->index();

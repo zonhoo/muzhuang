@@ -150,12 +150,20 @@
                                 <li>
                                     <a href="{{route('admin.post.show',$post->id)}}">查看</a>
                                 </li>
+                                <li>
+                                    <a href="{{route('admin.post.refresh',$post->id)}}">刷新</a>
+                                </li>
                                 <li class="divider"></li>
                                 <li>
                                 @if($post->is_checked==0)
                                     <a href="{{route('admin.post.check',$post->id)}}">审核</a>
                                 @else
                                     <a>已审核</a>
+                                @endif
+                                @if($post->is_locked==0)
+                                    <a href="{{route('admin.post.lock',$post->id)}}">锁定</a>
+                                @else
+                                    <a href="{{route('admin.post.unlock',$post->id)}}">解除锁定</a>
                                 @endif
                                 </li>
                             </ul>

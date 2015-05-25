@@ -1,12 +1,13 @@
-<?php namespace App\Http\Controllers\api\v1;
+<?php namespace App\Http\Controllers\Api\V1;
 
 use App\Feedback;
 
 use App\Repositories\FeedbackRespository;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class FeedbackController extends BaseController {
+class FeedbackController extends Controller {
 
     public $feedback;
 

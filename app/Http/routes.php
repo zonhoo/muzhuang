@@ -116,11 +116,21 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
     Route::get('user/test',[
         'as'=>'admin.user.test','uses'=>'UserController@test'
     ]);
-
+    //post manager
     Route::get('post/{id}/check',[
         'as'=>'admin.post.check','uses'=>'PostController@check'
     ]);
 
+    Route::get('post/{id}/lock',[
+        'as'=>'admin.post.lock','uses'=>'PostController@lock'
+    ]);
+    Route::get('post/{id}/unlock',[
+        'as'=>'admin.post.unlock','uses'=>'PostController@unlock'
+    ]);
+
+    Route::get('post/{id}/refresh',[
+        'as'=>'admin.post.refresh','uses'=>'PostController@refresh'
+    ]);
     Route::resource('post', 'PostController',['names'=>['index'=>'admin.post']]);
 
     // 操作文件
@@ -177,8 +187,6 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
     Route::get('user/{postid}/unlike','UserController@userUnlikePost');
     Route::get('user/likes','UserController@getUserlikePosts');
 
-    //
-    Route::resource('feedback','FeedbackController');
     //用户中心接口
     Route::resource('user','UserController');
 
