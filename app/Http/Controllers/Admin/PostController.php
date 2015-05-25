@@ -125,6 +125,35 @@ class PostController extends BaseController {
         return redirect()->back();
     }
 
+    /*
+     * 文章锁定
+     * */
+
+    public function lock($id)
+    {
+        $post = Post::find($id);
+        $post->is_locked = 1;
+        $post->save();
+        flash()->success('文章已锁定（文章ID:'.$id.'）');
+        return redirect()->back();
+    }
+
+    public function unlock($id)
+    {
+        $post = Post::find($id);
+        $post->is_locked = 0;
+        $post->save();
+        flash()->success('文章已解除锁定（文章ID:'.$id.'）');
+        return redirect()->back();
+    }
+
+    public function refresh($id)
+    {
+        $post = Post::find($id);
+        $post->save();
+        flash()->success('已更新');
+        return redirect()->back();
+    }
 	/**
 	 * Remove the specified resource from storage.
 	 *
