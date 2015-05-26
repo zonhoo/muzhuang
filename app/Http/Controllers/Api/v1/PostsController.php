@@ -106,10 +106,10 @@ class PostsController extends BaseController {
     public function getList()
     {
 
-        $post = Post::with('user','likes')->whereRaw("date_format(created_at,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d') and is_checked=1 and is_blocked=0")->orderBy('updated_at','desc')->get();
+        $post = Post::with('user','likes')->whereRaw("date_format(created_at,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d') and is_checked=1 and is_locked=0")->orderBy('updated_at','desc')->get();
 
         if(empty($post)){
-            $post = Post::with('user','likes')->whereRaw('TO_DAYS(NOW())-TO_DAYS(created_at)=1 and is_checked=1 and is_blocked=0')->orderBy('updated_at','desc')->get();
+            $post = Post::with('user','likes')->whereRaw('TO_DAYS(NOW())-TO_DAYS(created_at)=1 and is_checked=1 and is_locked=0')->orderBy('updated_at','desc')->get();
         }
         return response()->json($post);
     }
@@ -124,7 +124,7 @@ class PostsController extends BaseController {
     public function getArticlePage($count)
     {
         //$select = ['id','user_id','title','subtitle','description','photo','favorite_count','share_count','view_count','commit_count','created_at'];
-        $post = Post::with('user','likes')->whereRaw('is_checked=1 and is_blocked=0')->orderBy('updated_at','desc')->paginate($count);
+        $post = Post::with('user','likes')->whereRaw('is_checked=1 and is_locked=0')->orderBy('updated_at','desc')->paginate($count);
         return response()->json($post);
     }
     /*
