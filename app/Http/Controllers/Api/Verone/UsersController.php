@@ -159,7 +159,7 @@ class UsersController extends Controller {
     {
         $user_id = $userId;
         $user = User::find($user_id);
-        $posts = $user->likes()->paginate(10);
+        $posts = $user->likes()->with('user')->paginate(10);
         return response()->json($posts);
     }
 
