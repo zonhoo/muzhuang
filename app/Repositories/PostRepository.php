@@ -21,7 +21,7 @@ class PostRepository {
             'subtitle' => $data['subtitle'],
             'description' => $data['description'],
             'is_checked' => 0,
-            'is_blocked' => 0,
+            'is_locked' => 0,
             'photo' => $data['photo'],
             'body' => $data['body']
         ]);
