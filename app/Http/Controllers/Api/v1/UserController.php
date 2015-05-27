@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends BaseController {
 
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -123,11 +117,11 @@ class UserController extends BaseController {
     /*
      * 喜欢操作
      * */
-    public function userLikePost($post_id)
+    public function userLikePost($userId,$post_id)
     {
-        $user_id = Auth::id();
+        $user_id = $userId;
         $user = User::find($user_id);
-        if($status = $this->userIsLike($post_id)){
+        if($status = $this->userIsLike($userId,$post_id)){
             return ['msg'=>'you had like this post!','err_code'=>'0','status'=>$status];
         }
         $user->likes()->attach($post_id); //@param $post_id
@@ -135,7 +129,7 @@ class UserController extends BaseController {
         $post = Post::find($post_id);
         $post->like_count +=1;
 
-        $status = $this->userIsLike($post_id);
+        $status = $this->userIsLike($userId,$post_id);
 
         $result = ['msg'=>'like post success!','err_code'=>'0','status'=>$status];
         return response()->json($result);
@@ -144,14 +138,14 @@ class UserController extends BaseController {
     /*
      * 不喜欢操作
      * */
-    public function userUnlikePost($post_id)
+    public function userUnlikePost($userId,$post_id)
     {
-        $user_id = Auth::id();
+        $user_id = $userId;
         $user = User::find($user_id);
         $user->likes()->detach($post_id);  //@param $post_id
         $post = Post::find($post_id);
         $post->like_count -=1;
-        $status = $this->userIsLike($post_id);
+        $status = $this->userIsLike($userId,$post_id);
 
         $result = ['msg'=>'unlike post success!','err_code'=>'0','status'=>$status];
         return response()->json($result);
@@ -160,18 +154,18 @@ class UserController extends BaseController {
     /*
      * 用户喜欢列表
      * */
-    public function getUserlikePosts()
+    public function getUserlikePosts($userId)
     {
-        $user_id = Auth::id();
+        $user_id = $userId;
         $user = User::find($user_id);
-        $posts = $user->likes()->select('id','photo','title','description','share_count','view_count','commit_count','like_count')->get();
+        $posts = $user->likes()->paginate(10);
         return response()->json($posts);
     }
 
-    public function userIsLike($post_id)
+    public function userIsLike($userId,$post_id)
     {
         $post = Post::find($post_id);
-        $like = $post->likes()->where('id','=',Auth::id())->first();
+        $like = $post->likes()->where('id','=',$userId)->first();
         if($like){
             $status = 1;
         }else{
