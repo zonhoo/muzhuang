@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Api\V1;
+<?php namespace App\Http\Controllers\Api\Verone;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -9,7 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class UserController extends Controller {
+class UsersController extends Controller {
 
 	/**
 	 * Display a listing of the resource.

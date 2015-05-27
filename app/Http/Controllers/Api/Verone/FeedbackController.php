@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Api\V1;
+<?php namespace App\Http\Controllers\Api\Verone;
 
 use App\Feedback;
 

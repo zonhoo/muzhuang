@@ -157,7 +157,7 @@ Route::post('uploadfile',[
 
 /*API*/
 
-Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
+Route::group(['namespace'=>'Api\Verone','prefix'=>'api/v1'],function(){
 
     //Route::controllers(['auth'=>'AuthController']);
 
@@ -174,8 +174,6 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
     //内容搜索
     Route::get('search/{keyword}','SearchController@search');
 
-    //Route::resource('posts','PostsController');
-
     /*
      * 登录
      * */
@@ -183,12 +181,12 @@ Route::group(['namespace'=>'Api\V1','prefix'=>'api/v1'],function(){
     Route::get('logout','AuthController@logout');
 
     //用户喜欢接口
-    Route::get('user/{userId}/{postid}/like','UserController@userLikePost');
-    Route::get('user/{userId}/{postid}/unlike','UserController@userUnlikePost');
-    Route::get('user/{userId}/likes','UserController@getUserlikePosts');
+    Route::get('user/{userId}/{postid}/like','UsersController@userLikePost');
+    Route::get('user/{userId}/{postid}/unlike','UsersController@userUnlikePost');
+    Route::get('user/{userId}/likes','UsersController@getUserlikePosts');
 
     //用户中心接口
-    Route::resource('user','UserController');
+    Route::resource('user','UsersController');
 
     //用户反馈
     Route::resource('feedback','FeedbackController',

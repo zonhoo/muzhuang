@@ -6,7 +6,7 @@
  * Time: 4:55 PM
  */
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\Verone;
 
 use App\Http\Controllers\Controller;
 

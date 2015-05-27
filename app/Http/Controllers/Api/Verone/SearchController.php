@@ -6,7 +6,7 @@
  * Time: 9:56 AM
  */
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\Verone;
 
 
 use App\Post;
