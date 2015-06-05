@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
+use App\Location;
 use App\Post;
 use Illuminate\Http\Request;
 use App\User;
@@ -79,8 +80,8 @@ class UsersController extends Controller {
 	{
 		//验证
         $v = Validator::make($request->all(),[
-            'nickname'=>'max:36',
-            'sex'=>'required|alpha|size:1',
+            'nickname'=>'required|max:36',
+            'sex'=>'required|digits:1',
             'area'=>'array',
             'signature' => 'max:100'
         ]);
@@ -92,12 +93,19 @@ class UsersController extends Controller {
         $user = User::find($id);
         $user->nickname = $request->input('nickname');
         $user->sex = $request->input('sex');
-        $user->area = $request->input('area');
         $user->signature = $request->input('signature');
         $user->save();
+        $location = new Location([
+            'country'=>$request->input('country'),
+            'province'=>$request->input('province'),
+            'city'=>$request->input('city'),
+            'area'=>$request->input('area'),
+            'street'=>$request->input('street'),
+            'address'=>$request->input('address'),
+        ]);
+        $user->location()->save($location);
         if($user->id){
             $result = ['msg'=>'update success','err_code'=>'0'];
-
         }else{
             $result = ['msg'=>'update failed','err_code'=>'1'];
         }

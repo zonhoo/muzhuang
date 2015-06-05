@@ -55,4 +55,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany('App\Post','like_user','user_id','post_id');
     }
 
+    public function location()
+    {
+        return $this->hasOne('App\Location');
+    }
 }
