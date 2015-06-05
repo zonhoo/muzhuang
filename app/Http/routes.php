@@ -186,6 +186,8 @@ Route::group(['namespace'=>'Api\Verone','prefix'=>'api/v1'],function(){
     Route::get('user/{userId}/likes','UsersController@getUserlikePosts');
 
     //用户中心接口
+    Route::post('user/{userId}/update','UsersController@update');
+
     Route::resource('user','UsersController');
 
     //用户反馈

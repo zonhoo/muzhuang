@@ -150,7 +150,7 @@ class PostController extends BaseController {
     public function refresh($id)
     {
         $post = Post::find($id);
-        $post->save();
+        $post->touch();
         flash()->success('已更新');
         return redirect()->back();
     }
