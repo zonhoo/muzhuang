@@ -135,8 +135,8 @@ class UsersController extends Controller {
         $user->likes()->attach($post_id); //@param $post_id
 
         $post = Post::find($post_id);
-        $post->like_count +=1;
-
+        $post->favorite_count = $post->favorite_count + 1;
+        $post->save();
         $status = $this->userIsLike($userId,$post_id);
 
         $result = ['msg'=>'like post success!','err_code'=>'0','status'=>$status];
@@ -152,7 +152,8 @@ class UsersController extends Controller {
         $user = User::find($user_id);
         $user->likes()->detach($post_id);  //@param $post_id
         $post = Post::find($post_id);
-        $post->like_count -=1;
+        $post->favorite_count = $post->favorite_count - 1;
+        $post->save();
         $status = $this->userIsLike($userId,$post_id);
 
         $result = ['msg'=>'unlike post success!','err_code'=>'0','status'=>$status];
