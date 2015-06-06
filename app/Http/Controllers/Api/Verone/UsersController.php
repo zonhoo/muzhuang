@@ -82,7 +82,6 @@ class UsersController extends Controller {
         $v = Validator::make($request->all(),[
             'nickname'=>'required|max:36',
             'sex'=>'required|digits:1',
-            'area'=>'array',
             'signature' => 'max:100'
         ]);
 
