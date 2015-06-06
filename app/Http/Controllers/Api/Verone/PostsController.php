@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Api\Verone;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Post;
@@ -7,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
-class PostsController extends BaseController {
+class PostsController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
