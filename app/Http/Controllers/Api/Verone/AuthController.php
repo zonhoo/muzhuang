@@ -27,7 +27,7 @@ class AuthController extends Controller implements AuthenticateUserListener{
     public function userHasLoggedIn($user)
     {
         $user = Auth::user();
-        return response()->json(['msg'=>'has logged in','status'=>'10002','err_code'=>'0','user'=>$user]);
+        return response()->json(['msg'=>'has logged in','status'=>'10002','err_code'=>'0','user'=>$user,'location'=>$user->location]);
     }
 
     public function logout()

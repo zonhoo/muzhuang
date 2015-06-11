@@ -10,11 +10,13 @@ namespace App\Http\Controllers\Api\Verone;
 
 
 use App\Post;
+use Illuminate\Http\Request;
 
 class SearchController extends BaseController{
 
-    public function search($keyword){
+    public function search(Request $request){
 
+        $keyword = $request->input('keyword');
         return Post::whereRaw("title like '%$keyword%' or body like '%$keyword%'")->paginate(15);
     }
 } 
