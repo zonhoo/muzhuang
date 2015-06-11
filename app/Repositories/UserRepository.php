@@ -40,9 +40,9 @@ class UserRepository {
     public function findByUsernameOrCreate($userData,$socialiteName)
     {
         if($socialiteName=='weibo'){
-            if($userData->gender =='m'){
+            if($userData->user['gender'] =='m'){
                 $sex = 1;
-            }elseif($userData->gender =='f'){
+            }elseif($userData->user['gender'] =='f'){
                 $sex = 2;
             }else{
                 $sex = 0;
