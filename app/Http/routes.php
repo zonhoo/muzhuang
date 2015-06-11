@@ -172,7 +172,7 @@ Route::group(['namespace'=>'Api\Verone','prefix'=>'api/v1'],function(){
     Route::get('post/{postId}/likers','PostsController@getPostLikeUsers');
 
     //内容搜索
-    Route::get('search/{keyword}','SearchController@search');
+    Route::post('search','SearchController@search');
 
     /*
      * 登录

@@ -40,17 +40,42 @@ class UserRepository {
     public function findByUsernameOrCreate($userData,$socialiteName)
     {
         if($socialiteName=='weibo'){
+            if($userData->gender =='m'){
+                $sex = 1;
+            }elseif($userData->gender =='f'){
+                $sex = 2;
+            }else{
+                $sex = 0;
+            }
             return User::firstOrCreate([
-                'name' => $userData->nickname,
+                'nickname' => $userData->nickname,
                 'avatar' => $userData->avatar,
-                'weibo_id'=>$userData->id
+                'weibo_id'=> $userData->id,
+                'signature'=> $userData->user['description'],
+                'email' => $userData->email,
+                'sex' => $sex,
             ]);
         }elseif($socialiteName=='weixin'){
-            return User::firstOrCreate([
-                'name' => $userData->nickname,
+
+            $user = User::firstOrCreate([
+                'nickname' => $userData->nickname,
                 'avatar' => $userData->headimgurl,
                 'weixin_id'=>$userData->openid,
+                'sex' => $userData->sex
             ]);
+
+            if($userData->country=='CN'){
+                $country = '中国';
+            }else{
+                $country = '其他';
+            }
+            $location = $user->location();
+            $location->create([
+                'country' => $country,
+                'province' => $userData->province,
+                'city'=> $userData->city
+            ]);
+            return $user;
         }elseif($socialiteName='github'){
             return User::firstOrCreate([
                 'name'=>$userData->id,
