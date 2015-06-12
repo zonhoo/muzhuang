@@ -16,7 +16,7 @@ class AddFieldsToUsersTable extends Migration {
 		{
 			//
             $table->string('weixin_id')->default('')->index();
-            $table->string('weibo_id')->default(0)->index();
+            $table->string('weibo_id')->default('')->index();
 
 		});
 	}
@@ -34,5 +34,4 @@ class AddFieldsToUsersTable extends Migration {
             $table->dropColumn(['weixin_id','weibo_id']);
 		});
 	}
-
 }
