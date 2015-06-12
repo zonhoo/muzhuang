@@ -46,7 +46,7 @@ class AuthenticateUser {
     public function appExecute($data)
     {
         $user = $this->users->findByNicknameOrCreate($data);
-        return $user;
+        return response()->json(['msg'=>'has logged in','err_code'=>'0','user'=>$user]);
     }
 
     public function getAuthorizationFirst($socialiteName)
