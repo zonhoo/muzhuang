@@ -36,4 +36,10 @@ class AuthController extends Controller implements AuthenticateUserListener{
         $result = ['msg'=>'has logged out','status'=>'10003','err_code'=>'0'];
         return response()->json($result);
     }
+
+
+    public function appLogin(AuthenticateUser $authenticateUser,Request $request)
+    {
+        return $authenticateUser->appExecute($request);
+    }
 }

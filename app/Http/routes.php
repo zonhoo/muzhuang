@@ -179,6 +179,7 @@ Route::group(['namespace'=>'Api\Verone','prefix'=>'api/v1'],function(){
      * */
     Route::get('login/{socialiteName}','AuthController@login');
     Route::get('logout','AuthController@logout');
+    Route::post('login','AuthController@appLogin');
 
     //用户喜欢接口
     Route::get('user/{userId}/{postid}/like','UsersController@userLikePost');
