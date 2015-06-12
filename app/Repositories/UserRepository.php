@@ -84,4 +84,25 @@ class UserRepository {
             ]);
         }
     }
-} 
+
+    public function findByNicknameOrCreate($userData)
+    {
+        $user = User::firstOrCreate([
+            'nickname' => $userData->input('nickname'),
+            'avatar' => $userData->input('avatar'),
+            'weibo_id'=> $userData->input('weibo_id'),
+            'weixin_id'=> $userData->input('weixin_id'),
+            'signature'=> $userData->input('signature'),
+            'email'=> $userData->input('email'),
+            'sex' => $userData->input('sex'),
+        ]);
+
+        $location = $user->location();
+        $location->firstOrCreate([
+            'country' => $userData->input('country'),
+            'province' => $userData->input('province'),
+            'city'=> $userData->input('city')
+        ]);
+        return $user;
+    }
+}

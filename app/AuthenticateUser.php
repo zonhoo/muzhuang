@@ -43,6 +43,12 @@ class AuthenticateUser {
 
     }
 
+    public function appExecute($data)
+    {
+        $user = $this->users->findByNicknameOrCreate($data);
+        return $user;
+    }
+
     public function getAuthorizationFirst($socialiteName)
     {
         return $this->socialite->with($socialiteName)->redirect();
