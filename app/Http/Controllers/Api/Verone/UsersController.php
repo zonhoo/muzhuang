@@ -80,8 +80,8 @@ class UsersController extends Controller {
 	{
 		//验证
         $v = Validator::make($request->all(),[
-            'nickname'=>'required|max:36',
-            'sex'=>'required|digits:1',
+            'nickname'=>'max:36',
+            'sex'=>'digits:1',
             'signature' => 'max:100'
         ]);
 
@@ -90,24 +90,29 @@ class UsersController extends Controller {
         }
 
         $user = User::find($id);
-        $user->nickname = $request->input('nickname');
-        $user->sex = $request->input('sex');
-        $user->signature = $request->input('signature');
-        $user->save();
-        $location = new Location([
-            'country'=>$request->input('country'),
-            'province'=>$request->input('province'),
-            'city'=>$request->input('city'),
-            'area'=>$request->input('area'),
-            'street'=>$request->input('street'),
-            'address'=>$request->input('address'),
-        ]);
-        $user->location()->save($location);
-        if($user->id){
-            $result = ['msg'=>'update success','err_code'=>'0'];
+        if(!empty($user)){
+            if($request->input('nickname')) $user->nickname = $request->input('nickname');
+            if($request->input('sex')) $user->sex = $request->input('sex');
+            if($request->input('signature')) $user->signature = $request->input('signature');
+            $user->save();
+            $location = new Location([
+                'country'=>$request->input('country'),
+                'province'=>$request->input('province'),
+                'city'=>$request->input('city'),
+                'area'=>$request->input('area'),
+                'street'=>$request->input('street'),
+                'address'=>$request->input('address'),
+            ]);
+            $user->location()->save($location);
+            if($user->id){
+                $result = ['msg'=>'update success','err_code'=>'0'];
+            }else{
+                $result = ['msg'=>'update failed','err_code'=>'1'];
+            }
         }else{
-            $result = ['msg'=>'update failed','err_code'=>'1'];
+            $result = ['msg'=>'the user is not exist!','err_code'=>'2'];
         }
+
         return response()->json($result);
 	}
 
