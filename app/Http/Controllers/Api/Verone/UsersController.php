@@ -90,29 +90,36 @@ class UsersController extends Controller {
         }
 
         $user = User::find($id);
-        if(!empty($user)){
+        if($user->id){
             if($request->input('nickname')) $user->nickname = $request->input('nickname');
             if($request->input('sex')) $user->sex = $request->input('sex');
             if($request->input('signature')) $user->signature = $request->input('signature');
             $user->save();
-            $location = new Location([
+            $loca = [
                 'country'=>$request->input('country'),
                 'province'=>$request->input('province'),
                 'city'=>$request->input('city'),
                 'area'=>$request->input('area'),
                 'street'=>$request->input('street'),
                 'address'=>$request->input('address'),
-            ]);
-            $user->location()->save($location);
+            ];
+
+            if(!$user->location())
+            {
+                $location = new Location($loca);
+                $user->location()->save($location);
+            }else{
+                $user->location()->update($loca);
+            }
+
             if($user->id){
-                $result = ['msg'=>'update success','err_code'=>'0'];
+                $result = ['msg'=>'update success','err_code'=>'0','user'=>$user];
             }else{
                 $result = ['msg'=>'update failed','err_code'=>'1'];
             }
         }else{
             $result = ['msg'=>'the user is not exist!','err_code'=>'2'];
         }
-
         return response()->json($result);
 	}
 
