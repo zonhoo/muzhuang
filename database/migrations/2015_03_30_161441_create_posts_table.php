@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration {
             $table->integer('node_id');
             $table->string('photo');
             $table->string('title')->index();
+            $table->string('subtitle')->index();
             $table->text('description');
             $table->text('body');
             $table->string('type');

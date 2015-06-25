@@ -49,8 +49,16 @@ class CoverController extends BaseController{
         return view('admin.cover.edit',compact('cover','id'));
     }
 
-    public function update()
+    public function update(Request $request,$id)
     {
+        $result = $this->cover->update($request->all(),$id);
+
+        if($result->id) {
+            flash()->success('操作成功');
+        }else{
+            flash()->error('操作失败');
+        }
+        return redirect()->back();
 
     }
 

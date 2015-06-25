@@ -166,9 +166,7 @@
 
                         if (res.state=='success') {
                           alert(msg);
-                          //$('#preview').attr('src',res.url);
                           $('#app_url').val(res.url);
-                          $('#app_url').attr("disabled",true);
                         }
                         else {
                           alert('upload failed!');

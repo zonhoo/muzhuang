@@ -8,12 +8,13 @@ use App\Version;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 
-class VersionController extends Controller {
+class VersionController extends BaseController {
 
     protected $version;
 
     public function __construct(VersionRepository $repository)
     {
+        parent::__construct();
         $this->version = $repository;
     }
 
@@ -78,6 +79,8 @@ class VersionController extends Controller {
 	public function edit($id)
 	{
 		//
+        $version = Version::find($id);
+        return view('admin.version.edit',compact('version'));
 	}
 
 	/**
@@ -86,9 +89,17 @@ class VersionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request,$id)
 	{
 		//
+        $result = $this->version->update($request->all(),$id);
+        if($result->id) {
+            flash()->success('操作成功');
+        }else{
+            flash()->error('操作失败');
+        }
+        return redirect()->back();
+
 	}
 
 	/**
@@ -100,6 +111,14 @@ class VersionController extends Controller {
 	public function destroy($id)
 	{
 		//
+        $version = Version::find($id);
+        $version->delete();
+        if($version->id) {
+            flash()->success('操作成功');
+        }else{
+            flash()->error('操作失败');
+        }
+        return redirect()->back();
 	}
 
 }
