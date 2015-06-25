@@ -40,48 +40,50 @@ class UserRepository {
     public function findByUsernameOrCreate($userData,$socialiteName)
     {
         if($socialiteName=='weibo'){
-            if($userData->user['gender'] =='m'){
-                $sex = 1;
-            }elseif($userData->user['gender'] =='f'){
-                $sex = 2;
-            }else{
-                $sex = 0;
+            $user = User::where('weibo_id','=',$userData->id)->first();
+            if(!$user)
+            {
+                if($userData->user['gender'] =='m'){
+                    $sex = 1;
+                }elseif($userData->user['gender'] =='f'){
+                    $sex = 2;
+                }else{
+                    $sex = 0;
+                }
+                return User::Create([
+                    'nickname' => $userData->nickname,
+                    'avatar' => $userData->avatar,
+                    'weibo_id'=> $userData->id,
+                    'signature'=> $userData->user['description'],
+                    'email' => $userData->email,
+                    'sex' => $sex,
+                ]);
             }
-            return User::firstOrCreate([
-                'nickname' => $userData->nickname,
-                'avatar' => $userData->avatar,
-                'weibo_id'=> $userData->id,
-                'signature'=> $userData->user['description'],
-                'email' => $userData->email,
-                'sex' => $sex,
-            ]);
-        }elseif($socialiteName=='weixin'){
-
-            $user = User::firstOrCreate([
-                'nickname' => $userData->nickname,
-                'avatar' => $userData->headimgurl,
-                'weixin_id'=>$userData->openid,
-                'sex' => $userData->sex
-            ]);
-
-            if($userData->country=='CN'){
-                $country = '中国';
-            }else{
-                $country = '其他';
-            }
-            $location = $user->location();
-            $location->create([
-                'country' => $country,
-                'province' => $userData->province,
-                'city'=> $userData->city
-            ]);
             return $user;
-        }elseif($socialiteName='github'){
-            return User::firstOrCreate([
-                'name'=>$userData->id,
-                'nickname'=>$userData->nickname,
-                'avatar'=>$userData->avatar
-            ]);
+
+        }elseif($socialiteName=='weixin'){
+            $user = User::where('weixin_id','=',$userData->openid)->first();
+            if(!$user){
+                $user = User::Create([
+                    'nickname' => $userData->nickname,
+                    'avatar' => $userData->headimgurl,
+                    'weixin_id'=>$userData->openid,
+                    'sex' => $userData->sex
+                ]);
+
+                if($userData->country=='CN'){
+                    $country = '中国';
+                }else{
+                    $country = '其他';
+                }
+                $location = $user->location();
+                $location->create([
+                    'country' => $country,
+                    'province' => $userData->province,
+                    'city'=> $userData->city
+                ]);
+            }
+            return $user;
         }
     }
 
