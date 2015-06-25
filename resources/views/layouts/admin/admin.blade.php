@@ -42,7 +42,7 @@
             <!--navbar-->
 			@include('layouts.admin.navbar')
 
-            @yield('page-title')
+            @include('layouts.admin.breadcrumb')
 
             @yield('flash-message')
             <!--content-->

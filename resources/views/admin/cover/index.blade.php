@@ -143,7 +143,9 @@
                                     <a href="{{route('admin.cover.edit',$cover->id)}}">编辑</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.cover.destroy',$cover->id)}}">删除</a>
+                                    {!! Form::open(['route'=>['admin.cover.destroy',$cover->id],'method'=>'DELETE',]) !!}
+                                    {!! Form::submit('删除',['class'=>'btn btn-black btn-sm']) !!}
+                                    {!! Form::close() !!}
                                 </li>
                                 <li>
                                     <a href="{{route('admin.cover.show',$cover->id)}}">查看</a>

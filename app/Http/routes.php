@@ -35,6 +35,10 @@ Route::group(['namespace' => 'Home'],function(){
     Route::get('search/result',[
         'as'=>'search.search','uses'=>'SearchController@search'
     ]);
+
+    Route::get('post/{id}',[
+        'as'=>'post.show','uses'=>'PostController@show'
+    ]);
 });
 
 
@@ -143,6 +147,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
 
     //上传封面
     Route::resource('cover', 'CoverController',['names'=>['index'=>'admin.cover']]);
+
     //App版本
     Route::resource('version', 'VersionController',['names'=>['index'=>'admin.version']]);
 });

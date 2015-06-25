@@ -48,7 +48,7 @@
 
  					<div class="panel panel-default">
  						<div class="panel-heading">
- 							<h3 class="panel-title">修改ID为<{{$id}}>内容信息</h3>
+ 							<h3 class="panel-title">修改ID为<{{$version->id}}>APP版本信息</h3>
  							<div class="panel-options">
  								<a href="#" data-toggle="panel">
  									<span class="collapse-icon">&ndash;</span>
@@ -61,60 +61,59 @@
  						</div>
  						<div class="panel-body">
 
- 							{!! Form::open(['route'=>['admin.cover.update',$cover->id],'role'=>'form','class'=>'form-horizontal','method'=>'patch']) !!}
+ 							{!! Form::open(['route'=>['admin.version.update',$version->id],'role'=>'form','class'=>'form-horizontal','method'=>'patch']) !!}
 
- 								<div class="form-group @if($errors->first('name')) has-error @endif">
- 									<label class="col-sm-1 control-label" for="name">标题</label>
-
- 									<div class="col-sm-11">
- 										<input type="text" name="name" class="form-control" id="name" value="{{$cover->title}}" placeholder="@if($errors->first('name')) {{$errors->first('name')}} @else 封面 @endif">
- 									</div>
- 								</div>
-
- 								<div class="form-group-separator"></div>
-
- 								<div class="form-group @if($errors->first('cover_url')) has-error @endif">
- 									<label class="col-sm-1 control-label" for="cover_url">封面</label>
-
- 									<div class="col-sm-10">
- 										<input type="text" name="cover_url" class="form-control"  id="cover_url" value="{{$cover->cover_url}}" placeholder="@if($errors->first('photo')) {{$errors->first('photo')}} @else 封面图片地址 @endif">
- 									</div>
- 									<a href="javascript:;" onclick="jQuery('#modal-2').modal('show');" class="btn btn-primary btn-single btn-sm col-sm-1">上传</a>
- 								</div>
-
- 								<div class="form-group-separator"></div>
-
-                                <div class="form-group">
-                                    <label class="col-sm-1 control-label" for="photo">预览</label>
+ 								<div class="form-group @if($errors->first('title')) has-error @endif">
+                                    <label class="col-sm-1 control-label" for="title">标题</label>
 
                                     <div class="col-sm-11">
-                                        <img id="preview" src="{{$cover->cover_url}}"/>
+                                        <input type="text" name="title" class="form-control" id="title" value="{{$version->title}}" placeholder="@if($errors->first('title')) {{$errors->first('title')}} @else 名称 @endif">
                                     </div>
-
-
                                 </div>
 
                                 <div class="form-group-separator"></div>
 
-                                    <div class="form-group @if($errors->first('display')) has-error @endif">
-                                        <label class="col-sm-1 control-label">显示</label>
+                                <div class="form-group @if($errors->first('version_code')) has-error @endif">
+                                    <label class="col-sm-1 control-label" for="version_code">版本号</label>
 
-                                        <div class="col-sm-11">
-
-                                            <p>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="disable" value="0" >
-                                                    否
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="disable" value="1" checked>
-                                                    是
-                                            </label>
-                                            @if($errors->first('display')) {{$errors->first('display')}} @endif
-                                            </p>
-
-                                        </div>
+                                    <div class="col-sm-11">
+                                        <input type="text" name="version_code" class="form-control" id="version_code" value="{{$version->version_code}}" placeholder="@if($errors->first('version_code')) {{$errors->first('version_code')}} @else 版本号 @endif">
                                     </div>
+                                </div>
+
+                                <div class="form-group-separator"></div>
+
+                                <div class="form-group @if($errors->first('version_name')) has-error @endif">
+                                    <label class="col-sm-1 control-label" for="version_name">版本名</label>
+
+                                    <div class="col-sm-11">
+                                        <input type="text" name="version_name" class="form-control" id="version_name" value="{{$version->version_name}}" placeholder="@if($errors->first('version_name')) {{$errors->first('version_name')}} @else 版本号 @endif">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-separator"></div>
+
+                                <div class="form-group @if($errors->first('description')) has-error @endif">
+                                    <label class="col-sm-1 control-label" for="field-2">描述</label>
+
+                                    <div class="col-sm-11">
+                                        <textarea name="description" class="form-control" cols="5" id="field-5" placeholder="描述">{{$version->description}}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group-separator"></div>
+
+                                <div class="form-group @if($errors->first('app_url')) has-error @endif">
+                                    <label class="col-sm-1 control-label" for="app_url">地址</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" name="app_url" class="form-control"  id="app_url" value="{{$version->app_url}}" placeholder="@if($errors->first('app_url')) {{$errors->first('app_url')}} @else 下载地址 @endif">
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <a href="javascript:;" onclick="jQuery('#modal-2').modal('show');" class="btn btn-primary btn-single btn-sm">上传APP</a>
+                                    </div>
+
+                                </div>
 
  								<div class="form-group-separator"></div>
 
@@ -169,8 +168,7 @@
                         if (res.state=='success') {
                           alert('upload success!');
                           $('#preview').attr('src',res.url);
-                          $('#cover_url').val(res.url);
-                          $('#cover_url').attr("disabled",true);
+                          $('#app_url').val(res.url);
                         }
                         else {
                           alert('upload failed!');

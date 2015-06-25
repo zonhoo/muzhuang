@@ -16,6 +16,8 @@
             View::composer('*', 'App\Http\ViewComposers\adminIndexComposer');
 
             View::composer('admin*','App\Http\ViewComposers\sidebarComposer');
+
+            View::composer('*','App\Http\ViewComposers\BreadcrumbComposer');
         }
         
         /**

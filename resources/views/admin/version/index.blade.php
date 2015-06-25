@@ -147,7 +147,9 @@
                                     <a href="{{route('admin.version.edit',$version->id)}}">编辑</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.version.destroy',$version->id)}}">删除</a>
+                                    {!! Form::open(['route'=>['admin.version.destroy',$version->id],'method'=>'DELETE',]) !!}
+                                    {!! Form::submit('删除',['class'=>'btn btn-black btn-sm']) !!}
+                                    {!! Form::close() !!}
                                 </li>
                                 <li>
                                     <a href="{{route('admin.version.show',$version->id)}}">查看</a>
