@@ -89,7 +89,7 @@ class UsersController extends Controller {
             return response()->json($v->errors());
         }
 
-        $user = User::find($id);
+        $user = User::with('location')->find($id);
         if($user->id){
             if($request->input('nickname')) $user->nickname = $request->input('nickname');
             if($request->input('sex')) $user->sex = $request->input('sex');
