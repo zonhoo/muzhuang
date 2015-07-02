@@ -39,7 +39,7 @@ class UploadController extends Controller{
                     $fullFileName = $savePath.'/'.$saveFileName;
                 }
             }
-            return response()->json(['msg' => '上传成功', 'state' => 'success','url'=>url('').'/'.$fullFileName]);
+            return response()->json(['msg' => '上传成功', 'state' => 'success','url'=>$fullFileName]);
 
         }else{
             return response()->json(['msg' => '上传失败', 'state' => 'fail','url'=>'']);
