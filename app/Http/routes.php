@@ -32,6 +32,7 @@ Route::group(['namespace' => 'Home'],function(){
     Route::get('search',[
         'as'=>'search','uses'=>'SearchController@index'
     ]);
+
     Route::get('search/result',[
         'as'=>'search.search','uses'=>'SearchController@search'
     ]);
@@ -41,6 +42,13 @@ Route::group(['namespace' => 'Home'],function(){
     ]);
 });
 
+Route::get('download',[
+    'as'=>'download','uses'=>'Home\DownloadController@index'
+]);
+//文件下载响应
+Route::get('download/last',[
+    'as'=>'download.last','uses'=>'Home\DownloadController@downloadFile'
+]);
 
 
 //==================================================================//

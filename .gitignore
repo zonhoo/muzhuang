@@ -1,4 +1,8 @@
 /vendor
 /node_modules
 .env
-/public/uploads
+/public/uploads/cover/
+/public/uploads/download/
+/public/uploads/posts/
+/public/uploads/ueditor/
+/public/uploads/version/
